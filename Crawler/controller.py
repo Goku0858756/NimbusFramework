@@ -3,6 +3,41 @@ import requests
 # from bs4 import BeautifulSoup
 import argparse, os, sys
 
+def usage():
+    """
+    Print Usage for Arachnida
+    :return:
+    """
+    os.system('clear')
+    print('''
+
+    Arachnida <command> [<args>]
+
+    ## The most commonly used commands are:
+
+    command         Description
+    =======================================
+    crawl            Lets crawl a site *_*
+
+    ''')
+
+def usage_crawler():
+    """
+    Print Usage for Arachnida
+    :return:
+    """
+    os.system('clear')
+    print('''
+
+    crawl <option> [<args>]
+
+    ## The most commonly used commands are:
+
+    command         Description
+    =======================================
+    url            Give me a URL !!
+
+    ''')
 
 class Arachnida(object):
     """
@@ -17,7 +52,7 @@ class Arachnida(object):
         self.parser = argparse.ArgumentParser(
             prog="Controller Object",
             description='You can use this Controller to select Modules',
-            usage="USAGE TEXT")
+            usage=usage())
         self.parser.add_argument('module', help='Give me a module to use ;)')
 
         self.args = self.parser.parse_args(sys.argv[1:2])
@@ -35,7 +70,7 @@ class Arachnida(object):
         :return:
         """
         os.system('clear')
-        parser = argparse.ArgumentParser(prog="", usage="Usage Text", description="", epilog=None, add_help=True, argument_default=None)
+        parser = argparse.ArgumentParser(prog="", usage=usage_crawler(), description="", epilog=None, add_help=True, argument_default=None)
         parser.add_argument("url")
         parser.add_argument("-d", "--depth", dest="depth")
         parser.add_argument("-i", "--in", dest="input", help="Give the spider input data")
