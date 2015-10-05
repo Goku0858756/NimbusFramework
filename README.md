@@ -17,7 +17,7 @@ NimbusFramework
 
 # Crawler [ TODO ]
 
-- TODO: Crawl Basics
+[√] TODO: Crawl Basics
 - TODO: Crawler Handling HTTP Error codes
 - TODO: Storing Data to JSON
 - TODO: Storing Data to XML
@@ -29,7 +29,7 @@ NimbusFramework
 - TODO: Natural Language Toolkit
 - TODO: Find Javascript
 - TODO: Captcha Engine
-- TODO: Looking Human
+[√] TODO: Looking Human [ user-agent ] 
 - TODO: Unittest
 - TODO: Remote execution
 - TODO: Handling Cookies
@@ -44,4 +44,5 @@ NimbusFramework
 - TODO: Use Custom CrawlerScript
 - TODO: Handling Robot.txt
 - TODO: Url Completion
+- TODO: Handling encoding
 - TODO: Url Internal and External recognition
