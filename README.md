@@ -4,16 +4,28 @@ NimbusFramework
 
 # Core
 
-- TODO: Create Core CommandLine Interface
-- TODO: Create Banners
-- TODO: Structure Commands
-- TODO: Component Control by ThreadControlSystem
-- TODO: Session registration by Database
-- TODO: Argparse
-- TODO: ArgComplete
-- TODO: CommandLine Colors
-- TODO: CommandLine Sounds
-- TODO: CommandLine Tables
+Core Options | Done
+----------------------- | ----------
+Create Core CommandLine Interface | NO
+Create Banners | NO
+Structure Commands | NO
+Component Control by ThreadControlSystem | NO
+Session registration by Database | NO
+Argparse | NO
+ArgComplete | NO
+CommandLine Colors | NO
+CommandLine Sounds | NO
+CommandLine Tables | NO
+
+Core Important Options | Done
+-------------------------- | ----------
+Threading | NO
+Services | NO
+Modules | NO
+Plugins | NO
+Body/Framework | NO
+Documentation System Pythonic | NO
+
 
 # Crawler [ TODO ]
 
