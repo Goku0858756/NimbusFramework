@@ -6,11 +6,20 @@ MongoDB is a centralized important object to handle all states
 
 Mongo Server TODO | Done
 --------------------- | ------------------
-Server Start | NO
+Start | NO
+Stop | NO
+PID | NO
+Kill PID | NO
+Bash script | NO
+
 
 # MongoDB Client Options
 
 Mongo Client TODO | Done
 --------------------- | ------------------
-Client Start | NO
+Start | NO
+Stop | NO
+PID | NO
+Kill PID | NO
+Bash script | NO
 
