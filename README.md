@@ -19,6 +19,8 @@ NimbusFramework
 
 - √ Crawl Basics
 - Done: Looking Human [ user-agent ] 
+- Done: Randomize User-Agents
+- Done: Handling Sessions
 
 - TODO: Crawler Handling HTTP Error codes
 - TODO: Storing Data to JSON
@@ -34,14 +36,12 @@ NimbusFramework
 - TODO: Unittest
 - TODO: Remote execution
 - TODO: Handling Cookies
-- TODO: Handling Sessions
 - TODO: Reading Headers
 - TODO: Avoid Honeypots
 - TODO: Data normalization
 - TODO: Twitter crawl
 - TODO: Sentiment Analyse
 - TODO: Wget Downloads
-- TODO: Randomize User-Agents
 - TODO: Use Custom CrawlerScript
 - TODO: Handling Robot.txt
 - TODO: Url Completion
