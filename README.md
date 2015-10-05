@@ -22,31 +22,29 @@ TODO | Done
 Crawl Basics | YES
 Looking Human | YES
 Randomize User-Agents | YES
-Handling Sessions | NO
-
-
-- TODO: Crawler Handling HTTP Error codes
-- TODO: Storing Data to JSON
-- TODO: Storing Data to XML
-- TODO: Send Email SMTP
-- TODO: Submit Forms
-- TODO: Handling Logins
-- TODO: Handling Redirects
-- TODO: Selenium
-- TODO: Natural Language Toolkit
-- TODO: Find Javascript
-- TODO: Captcha Engine
-- TODO: Unittest
-- TODO: Remote execution
-- TODO: Handling Cookies
-- TODO: Reading Headers
-- TODO: Avoid Honeypots
-- TODO: Data normalization
-- TODO: Twitter crawl
-- TODO: Sentiment Analyse
-- TODO: Wget Downloads
-- TODO: Use Custom CrawlerScript
-- TODO: Handling Robot.txt
-- TODO: Url Completion
-- TODO: Handling encoding
-- TODO: Url Internal and External recognition
+Handling Sessions | YES
+Crawler Handling HTTP Error codes | NO
+Storing Data to JSON | NO
+Storing Data to XML | NO
+Send Email SMTP | NO
+Submit Forms | NO
+Handling Logins | NO
+Handling Redirects | NO
+Selenium | NO
+Natural Language Toolkit | NO
+Find Javascript | NO
+Captcha Engine | NO
+Unittest | NO
+Remote execution | NO
+Handling Cookies | NO
+Reading Headers | NO
+Avoid Honeypots | NO
+Data normalization | NO
+Twitter crawl | NO
+Sentiment Analyse | NO
+Wget Downloads | NO
+Use Custom CrawlerScript | NO
+Handling Robot.txt | NO
+Url Completion | NO
+Handling encoding | NO
+Url Internal and External recognition | NO
