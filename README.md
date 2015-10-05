@@ -23,28 +23,30 @@ Crawl Basics | YES
 Looking Human | YES
 Randomize User-Agents | YES
 Handling Sessions | YES
-Crawler Handling HTTP Error codes | NO
+Crawler Handling HTTP Error codes | YES
 Storing Data to JSON | NO
 Storing Data to XML | NO
+Data normalization | NO
 Send Email SMTP | NO
 Submit Forms | NO
 Handling Logins | NO
 Handling Redirects | NO
+Recognize Redirect | YES
 Selenium | NO
 Natural Language Toolkit | NO
 Find Javascript | NO
 Captcha Engine | NO
 Unittest | NO
 Remote execution | NO
-Handling Cookies | NO
-Reading Headers | NO
+Handling Cookies | YES
+Reading Headers | YES
 Avoid Honeypots | NO
-Data normalization | NO
 Twitter crawl | NO
 Sentiment Analyse | NO
 Wget Downloads | NO
 Use Custom CrawlerScript | NO
 Handling Robot.txt | NO
-Url Completion | NO
+Url Completion | YES
 Handling encoding | NO
+Recognize encoding | YES
 Url Internal and External recognition | NO

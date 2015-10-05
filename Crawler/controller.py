@@ -56,17 +56,28 @@ class Crawler(object):
     __set_base_url = {}
     __set_intern_href = []
     __set_extern_href = []
+    # Temporary
+    __set_all_href = {}
 
     def __init__(self, *args):
+        self.__dict__ = self.__shared_infromation
         args = args[0]
 
         self.name = ''
         self.session = requests.Session()
         self.user_agent = self.user_agent()
+        self.encode = self.encoding()
         self.pid = ''
         self.state = ''
         self.depth = 0
-        self.url = args.url
+        self.base = True
+        self.url = self.session.get(url=args.url)
+
+    def __str__(self):
+        return str(self.__shared_infromation)
+
+    def update(self, **kwargs):
+        self.__shared_infromation.update(kwargs)
 
     def run(self):
         print(self.url)
@@ -86,9 +97,46 @@ class Crawler(object):
                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36']
         return {'User-Agent': random.choice(agents)}
 
-    def url_validate(self):
-        pass
+    def url_check(self, url):
+        from urllib.parse import urlparse
 
+        parsed_url = urlparse(url=url)
+        if parsed_url.netloc == '' or parsed_url.netloc != self.__set_base_url['netloc']:
+            print('[ NO NETLOC    ]', parsed_url.netloc)
+        else:
+            print('[ MATCH NETLOC ]', parsed_url.netloc)
+        if parsed_url.scheme == '' or parsed_url.scheme != self.__set_base_url['scheme']:
+            print('[ NO SCHEME    ] ', parsed_url.scheme)
+        else:
+            print('[ MATCH SCHEME ]', parsed_url.scheme)
+        if parsed_url.path != '':
+            print('[ PATH ]', parsed_url.path)
+        print(self.__set_base_url['scheme'])
+        print(self.__set_base_url['netloc'])
+
+    def url_validate(self):
+        from urllib.parse import urlparse
+
+        split = urlparse(url=self.url.url, allow_fragments=False)
+        if self.base != False:
+            self.__set_base_url.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
+            self.base = False
+        self.__set_all_href.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
+
+    def encoding(self):
+        self.update(encoding=self.url.encoding)
+
+    def is_redirect(self):
+        self.update(is_redirect=self.url.is_redirect)
+
+    def status_code(self):
+        self.update(status_code=self.url.status_code)
+
+    def cookies(self):
+        self.update(cookies=self.url.cookies)
+
+    def headers(self):
+        self.update(headers=self.url.headers)
 
 if __name__ == '__main__':
     obj = Arachnida()
