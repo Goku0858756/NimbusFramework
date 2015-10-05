@@ -66,3 +66,8 @@ Url Completion | YES
 Handling encoding | NO
 Recognize encoding | YES
 Url Internal and External recognition | NO
+
+# Database Readme
+
+https://github.com/Goku0858756/NimbusFramework
+
