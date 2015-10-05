@@ -22,7 +22,7 @@ TODO | Done
 Crawl Basics | YES
 Looking Human | YES
 Randomize User-Agents | YES
-Handling Sessions | YES
+Handling Sessions | NO
 
 
 - TODO: Crawler Handling HTTP Error codes
