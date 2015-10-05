@@ -2,6 +2,7 @@
 
 NimbusFramework
 
+
 # Core
 
 Core Options | Done
@@ -16,6 +17,9 @@ ArgComplete | NO
 CommandLine Colors | NO
 CommandLine Sounds | NO
 CommandLine Tables | NO
+
+
+# Core IMPORTANT
 
 Core Important Options | Done
 -------------------------- | ----------
