@@ -17,10 +17,11 @@ NimbusFramework
 
 # Crawler [ TODO ]
 
-- √ Crawl Basics
-- √ Looking Human
-- √ Randomize User-Agents
-- √ Handling Sessions
+√ Crawl Basics
+√ Looking Human
+√ Randomize User-Agents
+√ Handling Sessions
+
 
 - TODO: Crawler Handling HTTP Error codes
 - TODO: Storing Data to JSON
