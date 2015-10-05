@@ -1,6 +1,6 @@
 __author__ = 'N05F3R4TU'
 import requests
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 import argparse, os, sys
 
 
@@ -66,12 +66,18 @@ class Crawler(object):
         self.name = ''
         self.session = requests.Session()
         self.user_agent = self.user_agent()
-        self.encode = self.encoding()
+
         self.pid = ''
         self.state = ''
         self.depth = 0
         self.base = True
         self.url = self.session.get(url=args.url)
+
+        self.encode = self.encoding()
+        self.redirect = self.is_redirect()
+        self.status = self.status_code()
+        self.cookie = self.cookies()
+        self.header = self.headers()
 
     def __str__(self):
         return str(self.__shared_infromation)
@@ -137,6 +143,16 @@ class Crawler(object):
 
     def headers(self):
         self.update(headers=self.url.headers)
+
+    def write_to_json(self):
+        # TODO: Get BaseUrl Name
+        # TODO: Create File with BaseUrl Name
+        # TODO: Create Index in JSON with Crawl Header Information
+        # TODO: Create Base Object and structure
+        pass
+
+    def write_to_xml(self):
+        pass
 
 if __name__ == '__main__':
     obj = Arachnida()
