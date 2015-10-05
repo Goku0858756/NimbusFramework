@@ -2,7 +2,12 @@
 
 MongoDB is a centralized important object to handle all states
 
-TODO | Done
+Mongo Server TODO | Done
 --------------------- | ------------------
 Server Start | NO
+
+
+Mongo Client TODO | Done
+--------------------- | ------------------
+Client Start | NO
 
