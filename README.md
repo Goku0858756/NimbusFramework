@@ -17,7 +17,7 @@ NimbusFramework
 
 # Crawler [ TODO ]
 
-√ Crawl Basics
+* √ Crawl Basics *
 √ Looking Human
 √ Randomize User-Agents
 √ Handling Sessions
