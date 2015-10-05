@@ -17,10 +17,12 @@ NimbusFramework
 
 # Crawler [ TODO ]
 
-* √ Crawl Basics *
-√ Looking Human
-√ Randomize User-Agents
-√ Handling Sessions
+TODO | Done
+----------------------- | ----------
+Crawl Basics | YES
+Looking Human | YES
+Randomize User-Agents | YES
+Handling Sessions | YES
 
 
 - TODO: Crawler Handling HTTP Error codes
