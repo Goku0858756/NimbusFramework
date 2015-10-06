@@ -1,5 +1,9 @@
 __author__ = 'N05F3R4TU'
 
+# TODO: Nimbus Own Envirement [ @startup ]
+# TODO: PID file tracking
+# mongod --pidfilepath ~/NimbusFramework/NimbusFramework/Database/dbmongo.pid
+
 # TODO: Create Basic Crawler
 # TODO: Create MasScanner
 # TODO: Create Plugins
