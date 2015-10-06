@@ -69,7 +69,7 @@ class Arachnida(object):
         Crawl Method
         :return:
         """
-        os.system('clear')
+        # os.system('clear')
         parser = argparse.ArgumentParser(prog="", usage=usage_crawler(), description="", epilog=None, add_help=True, argument_default=None)
         parser.add_argument("url")
         parser.add_argument("-d", "--depth", dest="depth")
@@ -98,6 +98,8 @@ class Crawler(object):
         self.__dict__ = self.__shared_infromation
         args = args[0]
 
+
+
         self.name = ''
         self.session = requests.Session()
         self.user_agent = self.user_agent()
@@ -121,7 +123,8 @@ class Crawler(object):
         self.__shared_infromation.update(kwargs)
 
     def run(self):
-        print(self.url)
+        print('\033c')
+        print(self.url.text)
 
     def user_agent(self):
         import random
