@@ -1,14 +1,14 @@
 __author__ = 'N05F3R4TU'
 import requests
 # from bs4 import BeautifulSoup
-import argparse, os, sys
+import argparse, sys
 
 def usage():
     """
     Print Usage for Arachnida
     :return:
     """
-    os.system('clear')
+    print('\033c')
     print('''
 
     Arachnida <command> [<args>]
@@ -26,7 +26,7 @@ def usage_crawler():
     Print Usage for Arachnida
     :return:
     """
-    os.system('clear')
+    print('\033c')
     print('''
 
     crawl <option> [<args>]
@@ -57,7 +57,7 @@ class Arachnida(object):
 
         self.args = self.parser.parse_args(sys.argv[1:2])
         if not hasattr(self, self.args.module):
-            os.system("clear")
+            print('\033c')
             print('Unrecognized module')
             self.parser.print_help()
             exit(1)
@@ -69,7 +69,7 @@ class Arachnida(object):
         Crawl Method
         :return:
         """
-        # os.system('clear')
+        print('\033c')
         parser = argparse.ArgumentParser(prog="", usage=usage_crawler(), description="", epilog=None, add_help=True, argument_default=None)
         parser.add_argument("url")
         parser.add_argument("-d", "--depth", dest="depth")
@@ -98,8 +98,6 @@ class Crawler(object):
         self.__dict__ = self.__shared_infromation
         args = args[0]
 
-
-
         self.name = ''
         self.session = requests.Session()
         self.user_agent = self.user_agent()
@@ -123,8 +121,7 @@ class Crawler(object):
         self.__shared_infromation.update(kwargs)
 
     def run(self):
-        print('\033c')
-        print(self.url.text)
+        print(self.url)
 
     def user_agent(self):
         import random
