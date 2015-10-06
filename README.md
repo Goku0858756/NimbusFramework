@@ -4,7 +4,7 @@ NimbusFramework
 
 # Dependencies [ Apps. ]
 
-# | Name | Description | In Background | Updateble | URL
+nr | Name | Description | In Background | Updateble | URL
 ---- | ---------- | --------------------------- | ----- | ----- | --------------------------------------
 1 | Mongo DB | Document based db | YES | NO | https://www.mongodb.com/
 
