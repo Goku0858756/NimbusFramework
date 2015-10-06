@@ -9,5 +9,5 @@
 # PORT
 # port = 27017
 
-# Screen Sessions
-# screen -d -m -S "MongoServer" mongod
+# DB
+# database_path = $PATH
