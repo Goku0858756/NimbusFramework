@@ -23,3 +23,12 @@ PROXIES = { "http": "68.234.200.187:8080"}
 
 re = requests.get(url=URL, proxies=PROXIES)
 print(re.text)
+
+"""
+http://proxy-ip-list.com/download/txt-proxy-list.html
+http://freeproxylist.org/en/free-proxy-list.htm
+https://incloak.com/proxy-list/
+http://txt.proxyspy.net/proxy.txt
+http://proxypremium.blogspot.nl/2014/01/free-daily-proxy-list-txt-download.html
+#### http://requestb.in/1lxp6k11?inspect
+"""
