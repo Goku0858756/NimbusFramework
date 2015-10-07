@@ -84,7 +84,6 @@ class Arachnida(object):
         crawler = Crawler(args)
         crawler.run()
 
-
 class Crawler(object):
 
     __shared_infromation = {}
