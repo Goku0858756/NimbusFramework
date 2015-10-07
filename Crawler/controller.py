@@ -39,6 +39,8 @@ def usage_crawler():
 
     ''')
 
+
+# TODO: This Object Must be a Core Controller Object
 class Arachnida(object):
     """
     Controller Object
@@ -84,6 +86,8 @@ class Arachnida(object):
         crawler = Crawler(args)
         crawler.run()
 
+
+# TODO: The Crawler Object Must be a Abstract-Interface which Can be Implemented and Used by <script>-plugins
 class Crawler(object):
 
     __shared_infromation = {}
