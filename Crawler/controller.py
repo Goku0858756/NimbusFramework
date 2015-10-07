@@ -84,10 +84,6 @@ class Arachnida(object):
         crawler = Crawler(args)
         crawler.run()
 
-def func():
-    print("Voor Florisje testing Git Push to Chat APIs")
-
-
 class Crawler(object):
 
     __shared_infromation = {}
