@@ -125,6 +125,8 @@ class Crawler(object):
     def user_agent(self):
         import random
         """
+        THIS WILL BECOME A SEPERATE PLUGIN
+
         User-Agents Function. Call this to get a Random User-Agent
         :return: a dictionary:
         Example: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'}
