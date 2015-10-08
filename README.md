@@ -49,7 +49,7 @@ Crawler Handling HTTP Error codes | YES
 Storing Data to JSON | NO
 Storing Data to XML | NO
 Data normalization | NO
-Send Email SMTP | NO
+Send Email SMTP | YES
 Submit Forms | NO
 Handling Logins | NO
 Handling Redirects | NO
