@@ -2,6 +2,7 @@ __author__ = 'N05F3R4TU'
 import requests
 # from bs4 import BeautifulSoup
 import argparse, sys
+from time import sleep
 
 def usage():
     """
@@ -87,35 +88,50 @@ class Arachnida(object):
         crawler.run()
 
 
+
+
 # TODO: The Crawler Object Must be a Abstract-Interface which Can be Implemented and Used by <script>-plugins
 class Crawler(object):
+    from queue import Queue
+    """
+    This Crawler Object:
+     - GETs a Job/Task to crawl a url + [options] + [<args>]
+     - The run() Function Must be Called to start the Sub-Crawler (spiderlings)
+    This Crawler Object HAS a ((SHARED_QUEUE)) and the ((SHARED_SETS)) for the urls [ All, Internal, External ]
+     - The Spiderling Object(s) Will Crawl the Website/Url in Depth and Append/Report to the Master-Crawler-Object
+    """
 
     __shared_infromation = {}
     __set_base_url = {}
-    __set_intern_href = []
-    __set_extern_href = []
-    # Temporary
-    __set_all_href = {}
+
+    __set_all_href   = {}
+    __set_url_intern = []
+    __set_url_href   = []
+
+    queue = Queue()
 
     def __init__(self, *args):
         self.__dict__ = self.__shared_infromation
-        args = args[0]
+        self.args = args[0]
 
         self.name = ''
         self.session = requests.Session()
-        self.user_agent = self.user_agent()
+        self.useragent = self.user_agent()
 
         self.pid = ''
         self.state = ''
         self.depth = 0
         self.base = True
-        self.url = self.session.get(url=args.url)
+        self.url = self.session.get(url=self.args.url)
+        self.url_validate()
 
         self.encode = self.encoding()
         self.redirect = self.is_redirect()
         self.status = self.status_code()
         self.cookie = self.cookies()
         self.header = self.headers()
+
+
 
     def __str__(self):
         return str(self.__shared_infromation)
@@ -124,13 +140,28 @@ class Crawler(object):
         self.__shared_infromation.update(kwargs)
 
     def run(self):
-        print(self.url)
+        from bs4 import BeautifulSoup
+        """
+        Start Crawling Process
+        :return:
+        """
+
+        # TODO: Set session_id, session_name
+
+        for url in set([href.get('href') for href in BeautifulSoup(self.url.text).find_all('a')]):
+            self.queue.queue.append(url)
+
+        # TODO: Create a Function With States [ base_url || url_validate || queue_urls || birth_spiderling ]
+
+        print("Creating a Spiderling")
+        sleep(3)
+
+        spiderling = Spiderling(self.args)
 
     def user_agent(self):
+        # TODO: THIS WILL BECOME A SEPERATE PLUGIN
         import random
         """
-        THIS WILL BECOME A SEPERATE PLUGIN
-
         User-Agents Function. Call this to get a Random User-Agent
         :return: a dictionary:
         Example: {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'}
@@ -144,6 +175,18 @@ class Crawler(object):
         return {'User-Agent': random.choice(agents)}
 
     def url_check(self, url):
+        """
+        Check Every given URL for the following:
+            Check IF given URL is a Internal-Link or External
+            Check IF given URL is a (( XPath )) or (( Relative Path )) or (( Full Path ))
+            Check IF given URL is a (( HTTP )) or (( FTP )) or (( MAILTO ))
+            Check IF given URL is a http or https
+
+                Check given *args for settings
+                    IF correct Divide URLs by Passing URL to (( self.url_validate() )) function
+        :param url:
+        :return:
+        """
         from urllib.parse import urlparse
 
         parsed_url = urlparse(url=url)
@@ -157,10 +200,14 @@ class Crawler(object):
             print('[ MATCH SCHEME ]', parsed_url.scheme)
         if parsed_url.path != '':
             print('[ PATH ]', parsed_url.path)
+
         print(self.__set_base_url['scheme'])
         print(self.__set_base_url['netloc'])
 
     def url_validate(self):
+        """
+        Validate and SPLIT the given URL [ INPUT FROM COMMAND-LINE ]
+        """
         from urllib.parse import urlparse
 
         split = urlparse(url=self.url.url, allow_fragments=False)
@@ -191,8 +238,47 @@ class Crawler(object):
         # TODO: Create Base Object and structure
         pass
 
-    def write_to_xml(self):
-        pass
+
+class Spiderling(Crawler):
+    """
+    This Child of Crawler called Spiderling Will POP
+    an HREF from the Mother-Crawler-Object and will gather all HREFs from the given URL
+     - Will Filter URLs by Internal_url && External_url with the Methods, which are Passed by
+       the Mother-Object [ inherritence ]
+
+     - The URLs will be stored into a Set() in the Mother-Crawler-Object
+
+    """
+
+    def __init__(self, *args):
+        Crawler.__init__(self)
+        self.__dict__ = Crawler.__dict__
+
+        self.user_agent = "Fun"
+        print(self.queue.queue)
+
+        # self.pop_url = self.queue.queue.pop()
+        #
+        # print("POP ::::", self.pop_url)
+        # sleep(3)
+        #
+        # self.url_check(url=self.pop_url)
+
+
+
 
 if __name__ == '__main__':
     obj = Arachnida()
+
+
+"""
+crawl basis pagina [ doe alles in een Set() ]
+    Plaats van een Set() naar de Queue()
+        Maak een Spiderling session aan, POP van de Queue(), MAAR ook APPEND naar een Lijst met de AL Gecrawlde URLs
+
+        Als de NEW URL niet in de (((AL_CRAWLED_LIST)) zit, voeg toe aan de moeder_Set()
+
+            Wanneer Queue None is ::
+
+                Zet Set() over naar Queue() en Repeat
+"""
