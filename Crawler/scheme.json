@@ -1,0 +1,8 @@
+//
+// Scheme Crawler to MongoDB
+
+"session_url" : {
+        "url": "http://www.url.com",
+        "ip": "123.456.78.90",
+        "port": 80,
+}

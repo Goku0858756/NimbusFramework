@@ -23,6 +23,7 @@ class HipChat(object):
             "content-type": "application/json",
             "authorization": "Bearer %s" % self.token
         }
+
     def hipchat_payload(self):
         return {
             'message': self.message, 'color': self.message_color, 'message_format': self.message_format, 'notify': self.message_notify
@@ -40,7 +41,7 @@ class HipChat(object):
 
 if __name__ == '__main__':
 
-    token = '***'
+    token = '3XkVx2g5HT4lkqUTWYdqjdfhnFY7U1sun57xw9DR'
     room = '2014596'
 
-    HipChat(token=token, room=room, message="First Test Message").post()
+    HipChat(token=token, room=room, message="Denise hier is mijn kus voor jouw").post()

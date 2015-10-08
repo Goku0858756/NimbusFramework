@@ -1,0 +1,15 @@
+
+Crawler Session == New Session Object
+    - session_id, session_name
+    - session_queue
+
+    Session has Global_Set() :
+    - list_all_url AS set([])  || Internal_url && External_url
+
+        Global_Set() AS object HAS:
+        - set() Internal_url
+        - set() External_url
+
+            @filter_scheme, netloc, path
+            Internal_url_set() APPEND to __session_queue
+
