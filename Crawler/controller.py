@@ -2,7 +2,7 @@ __author__ = 'N05F3R4TU'
 import requests
 # from bs4 import BeautifulSoup
 import argparse, sys
-from time import sleep
+
 
 def usage():
     """
@@ -85,7 +85,7 @@ class Arachnida(object):
         print('Running a crawler, url=%s' % args.url)
 
         crawler = Crawler(args)
-        crawler.run()
+
 
 
 
@@ -103,10 +103,11 @@ class Crawler(object):
 
     __shared_infromation = {}
     __set_base_url = {}
+    _set_all_href_dict = {}
 
-    __set_all_href   = {}
-    __set_url_intern = []
-    __set_url_href   = []
+    _set_all_href   = []
+    _set_url_intern = []
+    _set_url_href   = []
 
     queue = Queue()
 
@@ -131,32 +132,32 @@ class Crawler(object):
         self.cookie = self.cookies()
         self.header = self.headers()
 
-
+        if self.url:
+            self.run(url=self.url)
 
     def __str__(self):
         return str(self.__shared_infromation)
 
+    def __del__(self):
+        print(self.__class__.__name__, "Destructed")
+        # return self
+
     def update(self, **kwargs):
         self.__shared_infromation.update(kwargs)
 
-    def run(self):
+    def run(self, url=None):
         from bs4 import BeautifulSoup
-        """
-        Start Crawling Process
-        :return:
-        """
+        """ Crawler Run """
+        if url != None:
+            # for link in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
 
-        # TODO: Set session_id, session_name
+            for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
+                self.queue.queue.append(self._set_all_href)
 
-        for url in set([href.get('href') for href in BeautifulSoup(self.url.text).find_all('a')]):
-            self.queue.queue.append(url)
-
-        # TODO: Create a Function With States [ base_url || url_validate || queue_urls || birth_spiderling ]
-
-        print("Creating a Spiderling")
-        sleep(3)
-
-        spiderling = Spiderling(self.args)
+            spiderling = Spiderling()
+        else:
+            assert "[ ASSERTION ERROR ] URL is None"
+        return
 
     def user_agent(self):
         # TODO: THIS WILL BECOME A SEPERATE PLUGIN
@@ -214,7 +215,7 @@ class Crawler(object):
         if self.base != False:
             self.__set_base_url.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
             self.base = False
-        self.__set_all_href.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
+        self._set_all_href_dict.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
 
     def encoding(self):
         self.update(encoding=self.url.encoding)
@@ -239,46 +240,29 @@ class Crawler(object):
         pass
 
 
+
+
 class Spiderling(Crawler):
     """
-    This Child of Crawler called Spiderling Will POP
-    an HREF from the Mother-Crawler-Object and will gather all HREFs from the given URL
-     - Will Filter URLs by Internal_url && External_url with the Methods, which are Passed by
-       the Mother-Object [ inherritence ]
-
-     - The URLs will be stored into a Set() in the Mother-Crawler-Object
-
+    Een Lijst met welke Links al bezocht zijn
+        Als nieuwe link niet in Lijst staat Voeg toe in Queue
     """
+    def __init__(self):
+        print("[ SIZE QUEUE ]", self.queue.qsize())
+        self.crawl()
 
-    def __init__(self, *args):
-        Crawler.__init__(self)
-        self.__dict__ = Crawler.__dict__
+    def crawl(self):
+        from bs4 import BeautifulSoup
 
-        self.user_agent = "Fun"
-        print(self.queue.queue)
+        for link in set([href.get('href') for href in BeautifulSoup(requests.get(self.queue.get(block=True)).text).find_all('a')]):
+            if link not in self._set_all_href:
+                self._set_all_href.append(link) and self.queue.put(link)
 
-        # self.pop_url = self.queue.queue.pop()
-        #
-        # print("POP ::::", self.pop_url)
-        # sleep(3)
-        #
-        # self.url_check(url=self.pop_url)
-
-
-
+        # Recursion
+        if self.queue.empty() == False:
+            self.crawl()
+        else:
+            print("[ EMPTY ] Queue is Empty", self.queue.qsize())
 
 if __name__ == '__main__':
     obj = Arachnida()
-
-
-"""
-crawl basis pagina [ doe alles in een Set() ]
-    Plaats van een Set() naar de Queue()
-        Maak een Spiderling session aan, POP van de Queue(), MAAR ook APPEND naar een Lijst met de AL Gecrawlde URLs
-
-        Als de NEW URL niet in de (((AL_CRAWLED_LIST)) zit, voeg toe aan de moeder_Set()
-
-            Wanneer Queue None is ::
-
-                Zet Set() over naar Queue() en Repeat
-"""
