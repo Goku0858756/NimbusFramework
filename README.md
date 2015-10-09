@@ -24,6 +24,18 @@ CommandLine Colors | NO
 CommandLine Sounds | NO
 CommandLine Tables | NO
 
+# Security !IMPORTANT!
+
+Todo | Done
+------------------------- | ----------
+Create Virtual Env. | YES
+Auto Deploy Vir. Env. | NO
+Auto Start Vir. Env. | YES
+Wrapper for Vir. Env. | NO
+User login for Vir. Env. Activation | NO
+Encrypt / Decrypt Vir. Env. | NO
+Remote Session | NO
+iPython Notebooks | NO
 
 # Core IMPORTANT
 
@@ -35,7 +47,6 @@ Modules | NO
 Plugins | NO
 Body/Framework | NO
 Documentation System Pythonic | NO
-
 
 # Crawler [ TODO ]
 
@@ -72,6 +83,8 @@ Url Completion | YES
 Handling encoding | NO
 Recognize encoding | YES
 Url Internal and External recognition | NO
+Crawler OOP | YES
+
 
 # Database Readme [ MongoDB ]
 

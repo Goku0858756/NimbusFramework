@@ -8,7 +8,7 @@ class HipChat(object):
     def __init__(self, token=None, room=None, message=None):
         self.message = message
         self.message_format = "html"
-        self.message_color = "green"
+        self.message_color = "blue"
         self.message_notify = True
 
         self.token = token
