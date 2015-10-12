@@ -82,7 +82,8 @@ Handling Robot.txt | NO
 Url Completion | YES
 Handling encoding | NO
 Recognize encoding | YES
-Url Internal and External recognition | NO
+Url Internal and External recognition | YES
+Handling XPATH | NO
 Crawler OOP | YES
 
 

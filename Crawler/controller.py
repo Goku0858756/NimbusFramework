@@ -1,7 +1,7 @@
 __author__ = 'N05F3R4TU'
-import requests
-# from bs4 import BeautifulSoup
-import argparse, sys
+import argparse
+import sys
+from time import sleep
 
 
 def usage():
@@ -79,13 +79,15 @@ class Arachnida(object):
         parser.add_argument("-i", "--in", dest="input", help="Give the spider input data")
         parser.add_argument("-o", "--out", dest="output", help="To send the output to a file")
         parser.add_argument("--db", dest="db", help="Send Log to Database when finished")
-        parser.add_argument("-b", dest="base", help="Base domain only")
+        parser.add_argument("-B", dest="base_dom", action="store_true", default=False,
+                            help="[ TRUE/FALSE ] Base domain only")
 
         args = parser.parse_args(sys.argv[2:])
+        print(parser)
+        print(args)
         print('Running a crawler, url=%s' % args.url)
 
         crawler = Crawler(args)
-
 
 
 
@@ -112,6 +114,7 @@ class Crawler(object):
     queue = Queue()
 
     def __init__(self, *args):
+        import requests
         self.__dict__ = self.__shared_infromation
         self.args = args[0]
 
@@ -123,6 +126,7 @@ class Crawler(object):
         self.state = ''
         self.depth = 0
         self.base = True
+        self.base_dom = self.args.base_dom
         self.url = self.session.get(url=self.args.url)
         self.url_validate()
 
@@ -140,20 +144,21 @@ class Crawler(object):
 
     def __del__(self):
         print(self.__class__.__name__, "Destructed")
-        # return self
 
     def update(self, **kwargs):
         self.__shared_infromation.update(kwargs)
 
     def run(self, url=None):
         from bs4 import BeautifulSoup
-        """ Crawler Run """
+
         if url != None:
-            # for link in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
-
             for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
-                self.queue.queue.append(self._set_all_href)
+                self.queue.queue.append(self.url_check(self._set_all_href))
 
+            print(len(self._set_all_href))
+            print(self._set_all_href)
+            print("Calling for Baby Spider")
+            sleep(3)
             spiderling = Spiderling()
         else:
             assert "[ ASSERTION ERROR ] URL is None"
@@ -177,41 +182,37 @@ class Crawler(object):
 
     def url_check(self, url):
         """
-        Check Every given URL for the following:
-            Check IF given URL is a Internal-Link or External
-            Check IF given URL is a (( XPath )) or (( Relative Path )) or (( Full Path ))
-            Check IF given URL is a (( HTTP )) or (( FTP )) or (( MAILTO ))
-            Check IF given URL is a http or https
-
-                Check given *args for settings
-                    IF correct Divide URLs by Passing URL to (( self.url_validate() )) function
-        :param url:
-        :return:
+        Check IF given URL is a (( HTTP )) or (( FTP )) or (( MAILTO ))
+        Check IF given URL is a http or https
         """
         from urllib.parse import urlparse
-
+        import re
         parsed_url = urlparse(url=url)
-        if parsed_url.netloc == '' or parsed_url.netloc != self.__set_base_url['netloc']:
-            print('[ NO NETLOC    ]', parsed_url.netloc)
-        else:
-            print('[ MATCH NETLOC ]', parsed_url.netloc)
-        if parsed_url.scheme == '' or parsed_url.scheme != self.__set_base_url['scheme']:
-            print('[ NO SCHEME    ] ', parsed_url.scheme)
-        else:
-            print('[ MATCH SCHEME ]', parsed_url.scheme)
-        if parsed_url.path != '':
-            print('[ PATH ]', parsed_url.path)
 
-        print(self.__set_base_url['scheme'])
-        print(self.__set_base_url['netloc'])
+        # Internal Link
+        if not parsed_url.netloc and not parsed_url.scheme and parsed_url.path:
+            return str(
+                "{}://{}{}".format(self.__set_base_url['scheme'], self.__set_base_url['netloc'], parsed_url.path))
+        else:
+            assert "[ ASSERTION ERROR #1 ]", parsed_url
+
+        # External Link
+        if parsed_url.netloc and parsed_url.netloc != self.__set_base_url['netloc']:
+            if re.match('//', url):
+                return '{}:{}'.format(self.__set_base_url['scheme'], url)
+            else:
+                assert "[ ASSERTION ERROR #2 ]", parsed_url
+            return url
+        else:
+            assert "[ ASSERTION ERROR #3 ]", parsed_url
+
+        # Full Link is Correct
+        return url
 
     def url_validate(self):
-        """
-        Validate and SPLIT the given URL [ INPUT FROM COMMAND-LINE ]
-        """
         from urllib.parse import urlparse
 
-        split = urlparse(url=self.url.url, allow_fragments=False)
+        split = urlparse(url=self.url.url, allow_fragments=True)
         if self.base != False:
             self.__set_base_url.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
             self.base = False
@@ -239,30 +240,57 @@ class Crawler(object):
         # TODO: Create Base Object and structure
         pass
 
-
-
-
 class Spiderling(Crawler):
     """
     Een Lijst met welke Links al bezocht zijn
         Als nieuwe link niet in Lijst staat Voeg toe in Queue
     """
     def __init__(self):
-        print("[ SIZE QUEUE ]", self.queue.qsize())
-        self.crawl()
+
+        if self.queue.empty() != True:
+            self.crawl()
 
     def crawl(self):
         from bs4 import BeautifulSoup
+        import requests
 
-        for link in set([href.get('href') for href in BeautifulSoup(requests.get(self.queue.get(block=True)).text).find_all('a')]):
-            if link not in self._set_all_href:
-                self._set_all_href.append(link) and self.queue.put(link)
+        try:
+
+            for link in set([href.get('href') for href in
+                             BeautifulSoup(requests.get(url=self.queue.get(block=True)).text).find_all('a')]):
+                # print(self.url_check(url=link))
+                # print(link)
+
+                if self.url_check(url=link) not in self._set_all_href:
+                    self._set_all_href.append(self.url_check(url=link))
+                    self.queue.queue.append(self.url_check(url=link))
+
+        except Exception as e:
+            print("[ EXCEPTION ERROR IN SPIDERLING ]", str(e))
+
+        finally:
+            print("[ QUEUE ]:", self.queue.qsize())
+            print("[ ARRAY ]:", len(self._set_all_href))
 
         # Recursion
         if self.queue.empty() == False:
             self.crawl()
         else:
             print("[ EMPTY ] Queue is Empty", self.queue.qsize())
+
+            # def xpath_check(self, url):
+            #     # import re
+            #     # try:
+            #     #     # return url
+            #     #     if re.match("//", url):
+            #     #         print(type(url))
+            #     #         url = "XXxXXXXXX_______________ {}".format(url)
+            #     #         return url
+            #     # except Exception as e:
+            #     #     print("[ EXCEPTION RE MATCH ]", str(e))
+            #     #
+            #     # return url
+            #     print(url)
 
 if __name__ == '__main__':
     obj = Arachnida()
