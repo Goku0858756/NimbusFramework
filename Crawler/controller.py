@@ -89,7 +89,6 @@ class Arachnida(object):
 
 
 
-
 # TODO: The Crawler Object Must be a Abstract-Interface which Can be Implemented and Used by <script>-plugins
 class Crawler(object):
     from queue import Queue
@@ -140,20 +139,16 @@ class Crawler(object):
 
     def __del__(self):
         print(self.__class__.__name__, "Destructed")
-        # return self
 
     def update(self, **kwargs):
         self.__shared_infromation.update(kwargs)
 
     def run(self, url=None):
         from bs4 import BeautifulSoup
-        """ Crawler Run """
+
         if url != None:
-            # for link in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
-
             for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
-                self.queue.queue.append(self._set_all_href)
-
+                self.queue.queue.append(self.url_check(self._set_all_href))
             spiderling = Spiderling()
         else:
             assert "[ ASSERTION ERROR ] URL is None"
@@ -177,40 +172,25 @@ class Crawler(object):
 
     def url_check(self, url):
         """
-        Check Every given URL for the following:
-            Check IF given URL is a Internal-Link or External
-            Check IF given URL is a (( XPath )) or (( Relative Path )) or (( Full Path ))
-            Check IF given URL is a (( HTTP )) or (( FTP )) or (( MAILTO ))
-            Check IF given URL is a http or https
-
-                Check given *args for settings
-                    IF correct Divide URLs by Passing URL to (( self.url_validate() )) function
-        :param url:
-        :return:
+        Check IF given URL is a (( HTTP )) or (( FTP )) or (( MAILTO ))
+        Check IF given URL is a http or https
         """
         from urllib.parse import urlparse
-
+        import re
         parsed_url = urlparse(url=url)
-        if parsed_url.netloc == '' or parsed_url.netloc != self.__set_base_url['netloc']:
-            print('[ NO NETLOC    ]', parsed_url.netloc)
-        else:
-            print('[ MATCH NETLOC ]', parsed_url.netloc)
-        if parsed_url.scheme == '' or parsed_url.scheme != self.__set_base_url['scheme']:
-            print('[ NO SCHEME    ] ', parsed_url.scheme)
-        else:
-            print('[ MATCH SCHEME ]', parsed_url.scheme)
-        if parsed_url.path != '':
-            print('[ PATH ]', parsed_url.path)
 
-        print(self.__set_base_url['scheme'])
-        print(self.__set_base_url['netloc'])
+        # Internal Link
+        if not parsed_url.netloc and not parsed_url.scheme and parsed_url.path:
+            return "{}://{}{}".format(self.__set_base_url['scheme'], self.__set_base_url['netloc'], parsed_url.path)
+
+        # External Link
+        if parsed_url.netloc and parsed_url.netloc != self.__set_base_url['netloc']:
+            if re.match('//', url):
+                return '{}:{}'.format(self.__set_base_url['scheme'], url)
+            return url
 
     def url_validate(self):
-        """
-        Validate and SPLIT the given URL [ INPUT FROM COMMAND-LINE ]
-        """
         from urllib.parse import urlparse
-
         split = urlparse(url=self.url.url, allow_fragments=False)
         if self.base != False:
             self.__set_base_url.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
@@ -239,9 +219,6 @@ class Crawler(object):
         # TODO: Create Base Object and structure
         pass
 
-
-
-
 class Spiderling(Crawler):
     """
     Een Lijst met welke Links al bezocht zijn
@@ -255,6 +232,8 @@ class Spiderling(Crawler):
         from bs4 import BeautifulSoup
 
         for link in set([href.get('href') for href in BeautifulSoup(requests.get(self.queue.get(block=True)).text).find_all('a')]):
+            print(link)
+
             if link not in self._set_all_href:
                 self._set_all_href.append(link) and self.queue.put(link)
 
