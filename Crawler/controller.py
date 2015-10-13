@@ -278,19 +278,6 @@ class Spiderling(Crawler):
         else:
             print("[ EMPTY ] Queue is Empty", self.queue.qsize())
 
-            # def xpath_check(self, url):
-            #     # import re
-            #     # try:
-            #     #     # return url
-            #     #     if re.match("//", url):
-            #     #         print(type(url))
-            #     #         url = "XXxXXXXXX_______________ {}".format(url)
-            #     #         return url
-            #     # except Exception as e:
-            #     #     print("[ EXCEPTION RE MATCH ]", str(e))
-            #     #
-            #     # return url
-            #     print(url)
 
 if __name__ == '__main__':
     obj = Arachnida()
