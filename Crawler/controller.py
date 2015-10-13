@@ -279,5 +279,6 @@ class Spiderling(Crawler):
             print("[ EMPTY ] Queue is Empty", self.queue.qsize())
 
 
+
 if __name__ == '__main__':
     obj = Arachnida()
