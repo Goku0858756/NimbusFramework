@@ -154,14 +154,11 @@ class Crawler(object):
         if url != None:
             for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
                 self.queue.queue.append(self.url_check(self._set_all_href))
-<<<<<<< HEAD
 
             print(len(self._set_all_href))
             print(self._set_all_href)
             print("Calling for Baby Spider")
             sleep(3)
-=======
->>>>>>> e9686bf4c09b9550791c44d10f2412e99d97067d
             spiderling = Spiderling()
         else:
             assert "[ ASSERTION ERROR ] URL is None"
@@ -191,7 +188,6 @@ class Crawler(object):
         from urllib.parse import urlparse
         import re
         parsed_url = urlparse(url=url)
-<<<<<<< HEAD
 
         # Internal Link
         if not parsed_url.netloc and not parsed_url.scheme and parsed_url.path:
@@ -217,22 +213,6 @@ class Crawler(object):
         from urllib.parse import urlparse
 
         split = urlparse(url=self.url.url, allow_fragments=True)
-=======
-
-        # Internal Link
-        if not parsed_url.netloc and not parsed_url.scheme and parsed_url.path:
-            return "{}://{}{}".format(self.__set_base_url['scheme'], self.__set_base_url['netloc'], parsed_url.path)
-
-        # External Link
-        if parsed_url.netloc and parsed_url.netloc != self.__set_base_url['netloc']:
-            if re.match('//', url):
-                return '{}:{}'.format(self.__set_base_url['scheme'], url)
-            return url
-
-    def url_validate(self):
-        from urllib.parse import urlparse
-        split = urlparse(url=self.url.url, allow_fragments=False)
->>>>>>> e9686bf4c09b9550791c44d10f2412e99d97067d
         if self.base != False:
             self.__set_base_url.update(scheme=split.scheme, netloc=split.netloc, path=split.path, query=split.query, fragment=split.fragment)
             self.base = False
@@ -281,7 +261,6 @@ class Spiderling(Crawler):
                 # print(self.url_check(url=link))
                 # print(link)
 
-<<<<<<< HEAD
                 if self.url_check(url=link) not in self._set_all_href:
                     self._set_all_href.append(self.url_check(url=link))
                     self.queue.queue.append(self.url_check(url=link))
@@ -292,13 +271,6 @@ class Spiderling(Crawler):
         finally:
             print("[ QUEUE ]:", self.queue.qsize())
             print("[ ARRAY ]:", len(self._set_all_href))
-=======
-        for link in set([href.get('href') for href in BeautifulSoup(requests.get(self.queue.get(block=True)).text).find_all('a')]):
-            print(link)
-
-            if link not in self._set_all_href:
-                self._set_all_href.append(link) and self.queue.put(link)
->>>>>>> e9686bf4c09b9550791c44d10f2412e99d97067d
 
         # Recursion
         if self.queue.empty() == False:
