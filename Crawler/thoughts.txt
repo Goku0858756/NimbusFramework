@@ -1,15 +1,14 @@
 
-Crawler Session == New Session Object
-    - session_id, session_name
-    - session_queue
-
-    Session has Global_Set() :
-    - list_all_url AS set([])  || Internal_url && External_url
-
-        Global_Set() AS object HAS:
-        - set() Internal_url
-        - set() External_url
-
-            @filter_scheme, netloc, path
-            Internal_url_set() APPEND to __session_queue
-
+        # if parsed_url.netloc == '' or parsed_url.netloc != self.__set_base_url['netloc']:
+        #     print('[ NO NETLOC    ]', parsed_url.netloc)
+        #
+        # else:
+        #     print('[ MATCH NETLOC ]', parsed_url.netloc)
+        #
+        # if parsed_url.scheme == '' or parsed_url.scheme != self.__set_base_url['scheme']:
+        #     print('[ NO SCHEME    ] ', parsed_url.scheme)
+        # else:
+        #     print('[ MATCH SCHEME ]', parsed_url.scheme)
+        #
+        # if parsed_url.path != '':
+        #     print('[ PATH ]', parsed_url.path)
