@@ -83,7 +83,10 @@ Url Completion | YES
 Handling encoding | NO
 Recognize encoding | YES
 Url Internal and External recognition | YES
+<<<<<<< HEAD
 Handling XPATH | NO
+=======
+>>>>>>> e9686bf4c09b9550791c44d10f2412e99d97067d
 Crawler OOP | YES
 
 
