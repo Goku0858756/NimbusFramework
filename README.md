@@ -18,7 +18,7 @@ Create Banners | NO
 Structure Commands | NO
 Component Control by ThreadControlSystem | NO
 Session registration by Database | NO
-Argparse | NO
+Argparse | YES
 ArgComplete | NO
 CommandLine Colors | NO
 CommandLine Sounds | NO
@@ -43,9 +43,9 @@ Core Important Options | Done
 -------------------------- | ----------
 Threading | NO
 Services | NO
-Modules | NO
-Plugins | NO
-Body/Framework | NO
+Modules | YES
+Plugins | YES
+Body/Framework | YES
 Documentation System Pythonic | NO
 
 # Crawler [ TODO ]
@@ -83,11 +83,10 @@ Url Completion | YES
 Handling encoding | NO
 Recognize encoding | YES
 Url Internal and External recognition | YES
-<<<<<<< HEAD
 Handling XPATH | NO
-=======
->>>>>>> e9686bf4c09b9550791c44d10f2412e99d97067d
 Crawler OOP | YES
+Handling Cert. | NO
+Path-Traversal | YES
 
 
 # Database Readme [ MongoDB ]

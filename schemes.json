@@ -1,0 +1,11 @@
+{
+  "HEAD": {
+    "_id": "jjjjmmdd##",
+    "title": "base_url_name",
+    "component": "nmap",
+    "task": "scan",
+    "action": "scanning"
+  },
+  "TARGET": {},
+  "BODY": {}
+}
