@@ -8,7 +8,7 @@ class Bot(object):
     ircsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def __init__(self):
-        self.bot_nick = "kristina kazarina"
+        self.bot_nick = "ArnePaddo"
         self.bot_id = 666
         self.server = "irc.freenode.net"
         self.channel = "#HRO"

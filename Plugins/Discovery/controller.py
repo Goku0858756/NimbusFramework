@@ -100,3 +100,9 @@ class DiscoverDrupal(object):
         with open(self.file_plugins, mode="rt", buffering=2000) as drupal:
             plugins = [plugin.strip() for plugin in drupal.readlines()]
         return plugins
+
+
+if __name__ == '__main__':
+
+    wp = DiscoverWordpress()
+    wp.wp_themes()
