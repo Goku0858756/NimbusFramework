@@ -106,3 +106,4 @@ if __name__ == '__main__':
 
     wp = DiscoverWordpress()
     wp.wp_themes()
+    # http://www.giantflyingsaucer.com/blog/?cat=6

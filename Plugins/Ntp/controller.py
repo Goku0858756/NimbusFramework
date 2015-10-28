@@ -43,7 +43,7 @@ def parse_monlist_packet(data):
     if not result['response']: #Return if its a request
         result['error'] = "REQUEST_PACKET"
     elif ntp_req_code == 42: #Check if its a monlist packet
-        if DEBUG: print "item_size[%s] \tnum_items[%s] \tlen(data)[%s]" % (item_size, num_items, len(data))
+        if DEBUG: print("item_size[%s] \tnum_items[%s] \tlen(data)[%s]" % (item_size, num_items, len(data)))
 
         if item_size != 72:
             result['error'] = "WRONG_ITEM_SIZE"
@@ -67,7 +67,7 @@ def fetch(ntp_server, timeout=5):
         data = get_payload()
         bytes_sent = sock.sendto(data, (target, 123))
         if bytes_sent != len(data) and DEBUG:
-            print "Failed to send payload"
+            print("Failed to send payload")
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('0.0.0.0', 0))
@@ -82,7 +82,7 @@ def fetch(ntp_server, timeout=5):
             data, addr = sock.recvfrom(1024)
             ret = parse_monlist_packet(data)
             if ret['error']:
-                if DEBUG: print "Error parsing packet[%s]" % ret['error']
+                if DEBUG: print("Error parsing packet[%s]" % ret['error'])
             else:
                 results.update([x[0] for x in ret['records']])
         else:
@@ -116,14 +116,14 @@ def print_maltego(results):
         entities.appendChild(entity)
 
     output = doc.toxml()
-    print output[output.index("<Maltego"):] # Hack to rip out <? xml ?> so that maltego can function
+    print(output[output.index("<Maltego"):]) # Hack to rip out <? xml ?> so that maltego can function
 
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         targets = sys.argv[1:]
     else:
-        print "Usage: %s target ntp servers\n\nThis script will return a unique set of IP's obtained from the list of ntp servers via the monlist command" % sys.argv[0]
+        print("Usage: %s target ntp servers\n\nThis script will return a unique set of IP's obtained from the list of ntp servers via the monlist command" % sys.argv[0])
         sys.exit(-1)
 
     results = set()
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     if str(OUTPUT_FORMAT).lower() == 'maltego':
         print_maltego(results)
     else:
-        print "\n".join(results)
-        print "Number of results %s" % len(results)
+        print("\n".join(results))
+        print("Number of results %s" % len(results))
 
 #spidermark sensepostdata ntp_monlist.py
