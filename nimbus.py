@@ -38,4 +38,5 @@ __author__ = 'N05F3R4TU'
 # TODO: OpenSSL implementation
 # TODO: OpenVPN implementation
 
-tester = 4
+tester = 20
+te3ster = 266
