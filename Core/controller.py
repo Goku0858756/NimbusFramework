@@ -1,79 +1,61 @@
 __author__ = 'N05F3R4TU'
 
-
-def mongo_start():
-    import subprocess
-    import shlex
-    import os
-    from time import sleep
-    print("starting server")
-    sleep(3)
-    # subprocess.call(shlex.split('./server'))
-    os.system('./server.sh')
-
-def mongo_stop():
-    import subprocess
-    import shlex
-    from time import sleep
-    print("STOPPING server")
-    sleep(3)
-    subprocess.call(shlex.split('./stop.sh'))
-
-def mongo_pid():
-    import subprocess
-    import shlex
-    print(subprocess.call(shlex.split('cat mongodb.pid')))
-
-
-
-
-if __name__ == '__main__':
+class Backup(object):
     """
-        threading via commandline
+    Backup the system
     """
-    from argparse import ArgumentParser
-    from threading import Thread
-    from queue import Queue
+    def __init__(self):
+        pass
 
-    # parser = ArgumentParser(description="proces description")
-    #
-    # parser.add_argument("--start", dest="mongo_start", action="store_true")
-    # parser.add_argument("--stop", dest="mongo_stop", action="store_true")
-    # parser.add_argument("--pid", dest="sum", action="store_true")
-    #
-    # args = parser.parse_args()
-    #
-    # print(args)
+class Hibernate(object):
+    """
+    Hibernate ORM
+    """
+    def __init__(self):
+        pass
 
-    try:
-        raining = True
-        q = Queue()
+class Encrypt(object):
+    """
+    Encrypt the System
+    """
+    def __init__(self):
+        pass
 
-        while raining:
-            command = input("nimbus-input // ")
-            if command != "exit":
+class Hash(object):
+    """
+    Hashing the system
+    """
+    def __init__(self):
+        pass
 
-                if command == "mongostart":
-                    msta = Thread(target=mongo_start, args=(), daemon=True)
-                    msta.start()
-                    continue
-                elif command == "mongostop":
-                    msto = Thread(target=mongo_stop, args=())
-                    msto.start()
-                    continue
-                elif command == "mongopid":
-                    mpid = Thread(target=mongo_pid, args=())
-                    mpid.start()
-                    continue
-                else:
-                    print("Command Not Recognised")
-                continue
+class System(object):
+    """
+    The System Management
+    """
+    def __init__(self):
+        self.name = "System Management Object"
+        self.id = id(self)
 
-            elif command == "exit":
-                raining = False
-                print("Goodbye")
-            else:
-                print("I dont know what you mean")
-    except KeyboardInterrupt as e:
-        print(" ### Keyboard interruption")
+    def __str__(self):
+        return str(self.__dict__)
 
+    def start(self):
+        """
+        method to Start the system
+        :return:
+        """
+        pass
+
+    def stop(self):
+        """
+        Method to Stop the System (shutdown)
+        :return:
+        """
+        pass
+
+    def restart(self):
+        """
+        Method to Restart the system (activate helper, restart)
+        :return:
+        """
+        pass

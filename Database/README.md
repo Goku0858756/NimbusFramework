@@ -4,21 +4,15 @@ MongoDB is a centralized important object to handle all states
 
 # MongoDB Server Options
 
-MongoDB Server op background
-MongoDB met Bash script (?) < start | restart | stop >
-MongoDB met Screen aanroepen ?
-MongoDB met os.system ?
-
-found: http://www.cyberciti.biz/faq/python-run-external-command-and-get-output/
-
 Mongo Server TODO | Done
 --------------------- | ------------------
-Start | NO
-Stop | NO
-PID | NO
-Kill PID | NO
-Bash script | NO
-
+Start | YES
+Stop | YES
+Restart | YES
+PID | YES
+Kill PID | YES
+Bash script | YES
+Threaded | YES
 
 # MongoDB Client Options
 

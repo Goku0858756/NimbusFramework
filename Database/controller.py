@@ -10,6 +10,7 @@ def mongo_start():
     sleep(3)
     # subprocess.call(shlex.split('./server'))
     os.system('./server.sh')
+    return
 
 def mongo_stop():
     import subprocess
@@ -24,8 +25,17 @@ def mongo_pid():
     import shlex
     print(subprocess.call(shlex.split('cat mongodb.pid')))
 
+def this():
+    import os
+    print("PID :: ", os.getpid())
+    return os.getpid()
 
-
+def mongo(*args):
+    import os
+    from time import sleep
+    print("Connecting to MongoDB, 1 sec please ..")
+    sleep(3)
+    os.system("{} {}".format('./server.sh', ' '.join(args[0])))
 
 if __name__ == '__main__':
     """
@@ -50,30 +60,44 @@ if __name__ == '__main__':
         q = Queue()
 
         while raining:
-            command = input("nimbus-input // ")
-            if command != "exit":
+            command = input("nimbus-input // ").split()
 
-                if command == "mongostart":
-                    msta = Thread(target=mongo_start, args=(), daemon=True)
-                    msta.start()
-                    continue
-                elif command == "mongostop":
-                    msto = Thread(target=mongo_stop, args=())
-                    msto.start()
-                    continue
-                elif command == "mongopid":
-                    mpid = Thread(target=mongo_pid, args=())
-                    mpid.start()
-                    continue
-                else:
-                    print("Command Not Recognised")
-                continue
-
-            elif command == "exit":
-                raining = False
-                print("Goodbye")
+            if not command:
+                print("Type something in!")
             else:
-                print("I dont know what you mean")
+
+                if command[0] != "exit":
+
+                    if command[0] == "mongo":
+                        msta = Thread(target=mongo_start, args=(), daemon=True)
+                        msta.start()
+
+                    elif command[0] == "mongostop":
+                        msto = Thread(target=mongo_stop, args=())
+                        msto.start()
+
+                    elif command[0] == "mongopid":
+                        mpid = Thread(target=mongo_pid, args=())
+                        mpid.start()
+
+                    elif command[0] == "pid":
+                        pid = Thread(target=this, args=())
+                        pid.start()
+
+                    elif command[0] == "db":
+                        mongodb = Thread(target=mongo, args=(command[1:],), daemon=True)
+                        mongodb.start()
+
+                    else:
+                        print("Command Not Recognised")
+
+                elif command[0] == "exit":
+                    raining = False
+                    print("Goodbye")
+                else:
+                    print("I dont know what you mean")
+            continue
+
     except KeyboardInterrupt as e:
-        print(" ### Keyboard interruption")
+        print("\n\r\n\r\t### Keyboard interruption\n\r\n\r")
 
