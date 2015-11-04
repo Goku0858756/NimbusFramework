@@ -1,7 +1,6 @@
 __author__ = 'N05F3R4TU'
 from time import sleep
 from asyncio import BaseEventLoop
-from asyncio_mongo import 
 
 def start():
     """

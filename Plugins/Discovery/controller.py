@@ -102,6 +102,25 @@ class DiscoverDrupal(object):
         return plugins
 
 
+class DiscoverTypo3(object):
+    """
+    Discover Typo3 CMS Framework
+    URL: http://www.typo3exploit.com/
+    URL: https://www.intelligentexploit.com/view-details.html?id=2400
+    """
+
+    def __init__(self):
+        self.name = "Typo3 CMS Discovery"
+
+class DiscoverOpenCart(object):
+    """
+    Discover OpenCart CMS Framework
+    """
+
+    def __init__(self):
+        self.name = "Opencart CMS Framework Object"
+
+
 if __name__ == '__main__':
 
     wp = DiscoverWordpress()

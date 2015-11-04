@@ -45,3 +45,10 @@ class NmapScan(object):
 
     def arguments(self):
         pass
+
+
+
+
+"""
+    URL: LAZYmap :: https://github.com/Ocramius/LazyMap
+"""
