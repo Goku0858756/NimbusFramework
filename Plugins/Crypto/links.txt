@@ -1,0 +1,11 @@
+https://www.dlitz.net/software/pycrypto/api/2.6/Crypto.Cipher.PKCS1_v1_5-module.html
+https://pypi.python.org/pypi/pycrypto
+https://github.com/tsileo/bakthat
+http://stackoverflow.com/questions/20852664/python-pycrypto-encrypt-decrypt-text-files-with-aes
+
+http://downloads.joelinoff.com/mycrypt.py
+http://joelinoff.com/blog/?p=885
+http://docs.python-guide.org/en/latest/scenarios/crypto/
+
+http://pythonprogramming.net/encryption-and-decryption-in-python-code-example-with-explanation/
+http://stackoverflow.com/questions/16761458/how-to-aes-encrypt-decrypt-files-using-python-pycrypto-in-an-openssl-compatible
