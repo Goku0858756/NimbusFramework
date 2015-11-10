@@ -4,6 +4,17 @@ CURR="`pwd`"
 DB="/data/db"
 FULL_DB_PATH=$CURR$DB
 
+# COLORS
+RED="\033[1m"
+RED_BACK="\033[41m"
+GREEN="\033[70m"
+GREEN_BACK="\033[42m"
+YELLOW="\033[93m"
+YELLOW_BACK="\033[103m"
+BLUE="\033[34m"
+BLUE_BACK="\033[106m"
+END="\033[0m"
+
 if [[ $# -eq 0 ]] ; then
     echo 'No arguments supplied'
     exit 1
@@ -30,23 +41,14 @@ function stop {
   exit 1
 }
 function status {
-    echo "Status MongoDB"
+#    echo "Status MongoDB"
 
-#    MPID = "`pgrep mongod`"
-#    if  [[ $MPID -gt 1 ]] ; then
-#        echo "MongoDB is gt 1"
-#    elif [[ $MPID -eq 1 ]] ; then
-#        echo "MongoDB is eq 1"
-#    elif [[ "`pgrep mongod`" > /dev/null ]] ; then
-#        echo "Unexpected outcome"
-#    else
-#
-#        echo "I dont know what to do"
-#    fi
+
+
     if [[ "`pgrep mongod`" > /dev/null ]] ; then
-        echo "MongoDB is running at PID `pgrep mongod`"
+        echo -e "$GREEN_BACK$RED[ UP ]$END MongoDB is running at PID `pgrep mongod`"
     else
-        echo "It seems MongoDB Server is currently not running"
+        echo -e "$RED_BACK[ DOWN ]$END It seems MongoDB Server is currently not running"
     fi
     exit 1
 }
@@ -59,15 +61,6 @@ function pid {
     echo "`pgrep mongod`"
     exit 1
 }
-#function restart {
-#
-#}
-#function backup {
-#
-#}
-#function database {
-#
-#}
 
 case "$1" in
         start)
@@ -90,6 +83,6 @@ case "$1" in
             pid
             ;;
         *)
-            echo $"Usage: $0 {start|stop|restart|status|pid}"
+            echo $"Usage: $ex0 < start | stop | restart | status | pid >"
             exit 1
 esac

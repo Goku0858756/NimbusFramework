@@ -35,7 +35,11 @@ class Framework(object):
 
                     try:
                         if hasattr(self, self.args.command):
+                            """ Maybe the Most Important Code of the Whole Framework """
+                            # print("[ HAS ATTRIBUTE ]")
                             getattr(self, self.args.command)()
+                            # print("[ AFTER ATTRIBUTE ]")
+
                         elif not hasattr(self, self.args.command):
 
                             sprint("Unrecognized command")
@@ -72,7 +76,7 @@ class Framework(object):
 
         banner.randomize()
         for attr in [attr for attr in dir(self) if inspect.ismethod(getattr(self, attr))]:
-            if attr not in ["usage", "__init__", "__del__", "__str__"]:
+            if attr not in ["usage", "__init__", "__del__", "__str__", "methods"]:
                 # print("%s\t\t\t%s" % (attr, getattr(self, attr).__doc__))
                 commands.add_row([attr, getattr(self, attr).__doc__])
         return commands
@@ -86,74 +90,73 @@ class Framework(object):
         print(methods)
 
 
-    def run(self):
-        print("Command to Run the arguments")
-        print(self.args)
+    def crawl(self):
+        """Nimbus Calls for Arachnida to Crawl"""
+        from Modules.Crawler.controller import Arachnida
+
 
     def config(self):
         """This option is to configure the framework"""
         print("Config Command")
 
     def db(self):
+        """[ Database ] Control the Database with this option"""
         self.function_name = "db"
-        parser = argparse.ArgumentParser(prog="Db function", description="Nimbus Loves MongoDB", add_help=True)
-
+        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Nimbus Loves MongoDB", add_help=True)
         while self.session_state:
             try:
                 if not self.command.split()[1:]:
-                    sprint("Try to use `{} -h` for more option".format(self.function_name))
+                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
                     break
                 elif self.command.split()[1:]:
-
-                    # sprint("These are the options:")
-                    # stats_parser.add_argument("module")
                     parser.add_argument("--start", dest="start", action="store_true", default=False, help="Start the Database")
+                    parser.add_argument("--stop", dest="stop", action="store_true", default=False, help="Stop the Database")
                     parser.add_argument("--status", dest="status", action="store_true", default=False, help="The Status of the Database")
                     parser.add_argument("--add", dest="add", action="store_true", default=False, help="Add something to the database")
                     parser.add_argument("--dbs", dest="dbs", action="store_true", default=False, help="How many databases are there")
                     parser.add_argument("--pid", dest="pid", action="store_true", default=False, help="Database Process ID")
 
-                    print("[ OPTIONS ]", parser.parse_args(self.command.split()[1:]))
+                    # print("[ OPTIONS ]", parser.parse_args(self.command.split()[1:]))
                     args = parser.parse_args(self.command.split()[1:])
 
-                else:
-                    sprint("What else? Nespresso!")
-                    break
+                    """ here we import the method and call the object with our args """
+                    from Database.controller import DatabaseController
+                    DatabaseController(vars(args))
 
-                """ here call for DATABASE sh file with args """
-                # from Plugins.Stats.controller import Statistic
-                # # from Plugins import Stats
-                # stats = Statistic(vars(args))
-                # break
             except Exception as e:
-                sprint(Exception("[ DB ]", str(e)))
+                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
             finally:
-                # sprint("*" * 40)
                 break
 
 
     def stats(self):
+        """Get Statistics from the Database"""
         self.function_name = "stats"
-        stats_parser = argparse.ArgumentParser(prog="Stats function", description="This is a description for the Stats",
-                                         usage=self.usage())
+        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Off course We Love Statistics", add_help=True)
         while self.session_state:
-            if not self.command.split()[1:]:
+            try:
+                if not self.command.split()[1:]:
+                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+                    break
+                elif self.command.split()[1:]:
+                    parser.add_argument("--start", dest="start", action="store_true", default=False, help="Start the Database")
+                    parser.add_argument("--stop", dest="stop", action="store_true", default=False, help="Stop the Database")
+                    parser.add_argument("--status", dest="status", action="store_true", default=False, help="The Status of the Database")
+                    parser.add_argument("--add", dest="add", action="store_true", default=False, help="Add something to the database")
+                    parser.add_argument("--dbs", dest="dbs", action="store_true", default=False, help="How many databases are there")
+                    parser.add_argument("--pid", dest="pid", action="store_true", default=False, help="Database Process ID")
+
+                    args = parser.parse_args(self.command.split()[1:])
+
+                    """ here we import the method and call the object with our args """
+                    from Database.controller import DatabaseController
+                    DatabaseController(vars(args))
+
+            except Exception as e:
+                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
+            finally:
                 break
-            elif self.command.split()[1:]:
-                try:
-                    # stats_parser.add_argument("module")
-                    stats_parser.add_argument("--crawler", dest="crawler", action="store_true", default=False, help="Statistics about the Crawler")
-                    stats_parser.add_argument("--wp", dest="wp", action="store_true", default=False, help="Statistics about the found vulnerable WP websites")
 
-                except Exception as e:
-                    print(Exception("[ STATS ]", str(e)))
-
-                args = stats_parser.parse_args(self.command.split()[1:])
-
-                from Plugins.Stats.controller import Statistic
-                # from Plugins import Stats
-                stats = Statistic(vars(args))
-                break
 
     def set(self):
         self.function_name = "set"
@@ -172,7 +175,12 @@ class Framework(object):
                     raise Exception("[ SET ]", str(e))
                 args = parser.parse_args(self.command.split()[1:])
 
+    def add(self):
+        """Add [ VPN, Proxy, Job, Template, Targets ] in the Database"""
+        pass
+
     def service(self):
+        """What services are running at this moment"""
         self.function_name = "service"
         service_parser = argparse.ArgumentParser(prog="Set Function", description="This is a description for the Set function")
 
@@ -192,6 +200,7 @@ class Framework(object):
                 break
 
     def exit(self):
+        """To quit the Framework type `exit`"""
         self.session_state = False
         sprint("[!] ************************************************************************")
         sprint("[!] *       Here and Now i want to take a moment to thank a special        *")
@@ -205,14 +214,3 @@ class Framework(object):
         sprint("[!] *  Details: https://github.com/....../nimbus-framework/pull/####       *")
         sprint("[!] ************************************************************************")
         sprint("[!]                                       Rain with Rage, Exploit with Love ")
-
-
-# def main():
-#     try:
-#         app = Framework()
-#     except KeyboardInterrupt as k:
-#         print("\n\n\t*** [ KEYBOARD INTERRUPT ] ***\n\n")
-#
-# if __name__ == '__main__':
-#     # print(Framework.__dict__)
-#     main()

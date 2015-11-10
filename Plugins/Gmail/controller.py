@@ -1,9 +1,7 @@
 __author__ = 'N05F3R4TU'
 
-# TODO: Plugins: Gmail [√]
-# TODO: Send automated emails [√]
-# TODO: Compose emails on command line [√]
-# TODO: Send email with attachment
+# http://www.mailgun.com/analytics
+# https://www.hostnet.nl/helpdesk/e-mail/verschil-tussen-imap-en-pop3
 
 class Gmail(object):
 
