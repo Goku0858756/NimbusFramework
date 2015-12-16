@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 6.47 scan initiated Wed Nov 18 11:58:51 2015 as: nmap -sV -oX budo-sV.xml 141.138.136.234 -->
+<nmaprun scanner="nmap" args="nmap -sV -oX budo-sV.xml 141.138.136.234" start="1447844331" startstr="Wed Nov 18 11:58:51 2015" version="6.47" xmloutputversion="1.04">
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1447844331" endtime="1447844374"><status state="up" reason="syn-ack" reason_ttl="58"/>
+<address addr="141.138.136.234" addrtype="ipv4"/>
+<hostnames>
+<hostname name="host.globalspott.com" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="953">
+<extrareasons reason="no-responses" count="953"/>
+</extraports>
+<extraports state="closed" count="35">
+<extrareasons reason="resets" count="35"/>
+</extraports>
+<port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="ftp" product="ProFTPD" version="1.3.3e" ostype="Unix" method="probed" conf="10"><cpe>cpe:/a:proftpd:proftpd:1.3.3e</cpe></service></port>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="ssh" product="OpenSSH" version="5.3" extrainfo="protocol 2.0" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:5.3</cpe></service></port>
+<port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="domain" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="http" product="Apache httpd" version="2" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2</cpe></service></port>
+<port protocol="tcp" portid="110"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="pop3" product="Dovecot DirectAdmin pop3d" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="imap" product="Dovecot imapd" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="http" product="Apache httpd" version="2" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2</cpe></service></port>
+<port protocol="tcp" portid="465"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="smtps" method="table" conf="3"/></port>
+<port protocol="tcp" portid="587"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="smtp" product="Exim smtpd" version="4.76" hostname="host.globalspott.com" method="probed" conf="10"><cpe>cpe:/a:exim:exim:4.76</cpe></service></port>
+<port protocol="tcp" portid="993"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="imap" product="Dovecot DirectAdmin imapd" tunnel="ssl" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="995"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="pop3s" method="table" conf="3"/></port>
+<port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="255"/><service name="sip" method="table" conf="3"/></port>
+</ports>
+<times srtt="17136" rttvar="2117" to="100000"/>
+</host>
+<runstats><finished time="1447844374" timestr="Wed Nov 18 11:59:34 2015" elapsed="43.09" summary="Nmap done at Wed Nov 18 11:59:34 2015; 1 IP address (1 host up) scanned in 43.09 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

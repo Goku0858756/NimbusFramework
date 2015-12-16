@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 COMPONENT="MongoDB Installer"
 FILE="mongodb-osx-x86_64-3.0.7.tgz"
 URL="https://fastdl.mongodb.org/osx/$FILE"

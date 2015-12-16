@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="nmaprun" type="nmaprunType">
+    <xs:annotation>
+      <xs:documentation>Nmap 6.47 scan initiated Thu Nov 12 12:20:20 2015 as: nmap -Pn -sS -sV -A -oX file-output.xml -&amp;#45;reason -&amp;#45;packet-trace 217.149.143.62</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="verboseType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="level"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="stateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="state" use="optional"/>
+        <xs:attribute type="xs:string" name="reason" use="optional"/>
+        <xs:attribute type="xs:string" name="reason_ttl" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hostType">
+    <xs:sequence>
+      <xs:element type="statusType" name="status"/>
+      <xs:element type="addressType" name="address"/>
+      <xs:element type="hostnamesType" name="hostnames"/>
+      <xs:element type="portsType" name="ports"/>
+      <xs:element type="osType" name="os"/>
+      <xs:element type="uptimeType" name="uptime"/>
+      <xs:element type="distanceType" name="distance"/>
+      <xs:element type="tcpsequenceType" name="tcpsequence"/>
+      <xs:element type="ipidsequenceType" name="ipidsequence"/>
+      <xs:element type="tcptssequenceType" name="tcptssequence"/>
+      <xs:element type="traceType" name="trace"/>
+      <xs:element type="timesType" name="times"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="starttime"/>
+    <xs:attribute type="xs:string" name="endtime"/>
+  </xs:complexType>
+  <xs:complexType name="ipidsequenceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="values"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hostnamesType">
+    <xs:sequence>
+      <xs:element type="hostnameType" name="hostname"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="osmatchType">
+    <xs:sequence>
+      <xs:element type="osclassType" name="osclass"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="optional"/>
+    <xs:attribute type="xs:string" name="accuracy" use="optional"/>
+    <xs:attribute type="xs:string" name="line" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="traceType">
+    <xs:sequence>
+      <xs:element type="hopType" name="hop"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="port"/>
+    <xs:attribute type="xs:string" name="proto"/>
+  </xs:complexType>
+  <xs:complexType name="portsType">
+    <xs:sequence>
+      <xs:element type="extraportsType" name="extraports"/>
+      <xs:element type="portType" name="port" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="state"/>
+        <xs:attribute type="xs:string" name="reason"/>
+        <xs:attribute type="xs:string" name="reason_ttl"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="debuggingType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="level"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tcptssequenceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="values"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="portusedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="state" use="optional"/>
+        <xs:attribute type="xs:string" name="proto" use="optional"/>
+        <xs:attribute type="xs:string" name="portid" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="finishedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="time"/>
+        <xs:attribute type="xs:string" name="timestr"/>
+        <xs:attribute type="xs:string" name="elapsed"/>
+        <xs:attribute type="xs:string" name="summary"/>
+        <xs:attribute type="xs:string" name="exit"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="nmaprunType">
+    <xs:sequence>
+      <xs:element type="scaninfoType" name="scaninfo"/>
+      <xs:element type="verboseType" name="verbose"/>
+      <xs:element type="debuggingType" name="debugging"/>
+      <xs:element type="hostType" name="host"/>
+      <xs:element type="runstatsType" name="runstats"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="scanner"/>
+    <xs:attribute type="xs:string" name="args"/>
+    <xs:attribute type="xs:string" name="start"/>
+    <xs:attribute type="xs:string" name="startstr"/>
+    <xs:attribute type="xs:string" name="version"/>
+    <xs:attribute type="xs:string" name="xmloutputversion"/>
+  </xs:complexType>
+  <xs:complexType name="hostnameType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name"/>
+        <xs:attribute type="xs:string" name="type"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="distanceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="value"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tcpsequenceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="index"/>
+        <xs:attribute type="xs:string" name="difficulty"/>
+        <xs:attribute type="xs:string" name="values"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="addressType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="addr"/>
+        <xs:attribute type="xs:string" name="addrtype"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="osType">
+    <xs:sequence>
+      <xs:element type="portusedType" name="portused" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="osmatchType" name="osmatch" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:string" name="method" use="optional"/>
+        <xs:attribute type="xs:string" name="conf" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="portType">
+    <xs:sequence>
+      <xs:element type="stateType" name="state"/>
+      <xs:element type="serviceType" name="service"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="protocol" use="optional"/>
+    <xs:attribute type="xs:string" name="portid" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="hostsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="up"/>
+        <xs:attribute type="xs:string" name="down"/>
+        <xs:attribute type="xs:string" name="total"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="uptimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="seconds"/>
+        <xs:attribute type="xs:string" name="lastboot"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="extrareasonsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="reason"/>
+        <xs:attribute type="xs:string" name="count"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hopType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="ttl"/>
+        <xs:attribute type="xs:string" name="ipaddr"/>
+        <xs:attribute type="xs:string" name="rtt"/>
+        <xs:attribute type="xs:string" name="host"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="timesType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="srtt"/>
+        <xs:attribute type="xs:string" name="rttvar"/>
+        <xs:attribute type="xs:string" name="to"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="extraportsType">
+    <xs:sequence>
+      <xs:element type="extrareasonsType" name="extrareasons"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="state"/>
+    <xs:attribute type="xs:string" name="count"/>
+  </xs:complexType>
+  <xs:complexType name="scaninfoType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="type"/>
+        <xs:attribute type="xs:string" name="protocol"/>
+        <xs:attribute type="xs:string" name="numservices"/>
+        <xs:attribute type="xs:string" name="services"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="osclassType">
+    <xs:sequence>
+      <xs:element name="cpe">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="cpe:/o:openbsd:openbsd:4.0"/>
+            <xs:enumeration value="cpe:/o:freebsd:freebsd:7"/>
+            <xs:enumeration value="cpe:/o:freebsd:freebsd:6.3"/>
+            <xs:enumeration value="cpe:/o:ibm:aix:7"/>
+            <xs:enumeration value="cpe:/o:freebsd:freebsd:8"/>
+            <xs:enumeration value="cpe:/o:freebsd:freebsd:9"/>
+            <xs:enumeration value="cpe:/o:openbsd:openbsd:4.3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="type" use="optional"/>
+    <xs:attribute type="xs:string" name="vendor" use="optional"/>
+    <xs:attribute type="xs:string" name="osfamily" use="optional"/>
+    <xs:attribute type="xs:string" name="osgen" use="optional"/>
+    <xs:attribute type="xs:string" name="accuracy" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="runstatsType">
+    <xs:sequence>
+      <xs:element type="finishedType" name="finished"/>
+      <xs:element type="hostsType" name="hosts"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

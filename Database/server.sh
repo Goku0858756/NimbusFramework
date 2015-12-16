@@ -22,10 +22,20 @@ fi
 
 
 function start {
-  echo "*** Starting MongoDB server"
-  echo "$@"
-  mongod --pidfilepath $CURR/mongodb.pid --quiet &
-  exit 1
+#    echo "*** Starting MongoDB server"
+#    echo "$@"
+#    mongod --pidfilepath $CURR/mongodb.pid --quiet &
+#    exit 1
+
+    if [[ "`pgrep mongod`" > /dev/null ]] ; then
+        echo -e "$GREEN_BACK$RED[ UP ]$END MongoDB is already running at PID `pgrep mongod`"
+    else
+        # echo -e "$RED_BACK[ DOWN ]$END It seems MongoDB Server is currently not running"
+        echo "*** Starting MongoDB server"
+        echo "$@"
+        mongod --pidfilepath $CURR/mongodb.pid --quiet &
+    fi
+    exit 1
 }
 function cleanstop {
 #    mongod --shutdown
@@ -33,17 +43,25 @@ function cleanstop {
     exit 1
 }
 function stop {
-  echo "^^^ Stopping MongoDB server"
-  # PID="`cat $CURR/mongodb.pid`"
-  # kill $PID
-  echo "PID is `pgrep mongod`"
-  kill "`pgrep mongod`"
-  exit 1
+#  echo "^^^ Stopping MongoDB server"
+#  # PID="`cat $CURR/mongodb.pid`"
+#  # kill $PID
+#  echo "PID is `pgrep mongod`"
+#  kill "`pgrep mongod`"
+#  exit 1
+
+    if [[ "`pgrep mongod`" > /dev/null ]] ; then
+        echo "^^^ Stopping MongoDB server"
+        echo "PID is `pgrep mongod`"
+        kill "`pgrep mongod`"
+        # echo -e "$GREEN_BACK$RED[ UP ]$END MongoDB is already running at PID `pgrep mongod`"
+    else
+        echo -e "$RED_BACK[ DOWN ]$END It seems MongoDB Server is currently not running"
+    fi
+    exit 1
 }
 function status {
 #    echo "Status MongoDB"
-
-
 
     if [[ "`pgrep mongod`" > /dev/null ]] ; then
         echo -e "$GREEN_BACK$RED[ UP ]$END MongoDB is running at PID `pgrep mongod`"

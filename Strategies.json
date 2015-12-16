@@ -1,0 +1,157 @@
+/*"nmap":
+  {
+    "scan": {},
+    "nmap": {"command_line": "nmap -oX - -p 21 -sV 149.210.192.240", "scaninfo": {"tcp": {"method": "connect", "services": "21"}},
+    "scanstats": {"timestr": "Thu Nov 12 10:59:47 2015", "downhosts": "1", "totalhosts": "1", "uphosts": "0", "elapsed": "3.15"}}
+  }
+
+"nmap":
+  {
+    "scaninfo": {"tcp": {"services": "21-443", "method": "connect"}},
+    "command_line": "nmap -oX - -p 21-443 -sV 149.210.192.240", "scanstats": {"elapsed": "3.14", "uphosts": "0", "downhosts": "1", "totalhosts": "1", "timestr": "Thu Nov 12 11:03:04 2015"}},
+    "scan": {}}
+*/
+
+/* SENARIO 1 */
+
+/* FASE 01 - Determine if IP has Webserver by doing a Reverse Lookup*/
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": true/false,
+"reverse_lookup_name": "wordpress.org",
+
+/* FASE 02 Whois & Banner Grabbing & DNS-zone-transfer */
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": true,
+"whois": "BASE64 SW4gYnJpZWYsIEZTRiBzdXBwb3J0cyBjaGlsZHJlbiwgeW91dGggYW5kIHJ1cmFsIGNvbW11bml0aWVzIHdobyBhcmUgbGl2aW5nIGluIHBvdmVydHkgYnkgcHJvdmlkaW5nOjwvcD4KPHA",
+"banner": "BASE64 SW4gYnJpZWYsIEZTRiBzdXBwb3J0cyBjaGlsZHJlbiwgeW91dGggYW5kIHJ1cmFsIGNvbW11bml0aWVzIHdobyBhcmUgbGl2aW5nIGluIHBvdmVydHkgYnkgcHJvdmlkaW5nOjwvcD4KPHA",
+"zone_transfer":true/false
+
+/* FASE 03 Port Scanning & Geolocation */
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": true,
+"port": {"nmapscan": {"udp":[21,22,23]}},
+"port_scpecific": {"ntp":"123/udp", "tomcat":"8080/tcp"},
+"geo": {"country":"NL", "city":"", "Altidude":"etc.."}
+
+/* FASE 04 Discovery */
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": true,
+"url": {"full":"http://www.wordpress.org", "base":"wordpress.org", "scheme":"http://", "urlparse":"etc.."}
+"discover": {
+  "wordpress": {"theme":"theme_name", "plugin": ["plugin1", "plugin2", "etc.."], "version":"4.2.2", "readme.html":true, "robots.txt":true, "wp-admin":true, "path_traversal": ["PATH1", "PATH2", "etc.."]},
+  "drupal": {},
+  "joomla": {},
+  "typo3": {},
+  "oscommerce": {},
+}
+
+
+
+
+/* SENARIO 2 */
+
+/* FASE 01 - Determine if IP has Webserver by doing a Reverse Lookup*/
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": true/false,
+
+/* FASE 02 Whois & Banner Grabbing & Port Scan */
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": false,
+"whois": "BASE64 SW4gYnJpZWYsIEZTRiBzdXBwb3J0cyBjaGlsZHJlbiwgeW91dGggYW5kIHJ1cmFsIGNvbW11bml0aWVzIHdobyBhcmUgbGl2aW5nIGluIHBvdmVydHkgYnkgcHJvdmlkaW5nOjwvcD4KPHA",
+"banner": "BASE64 SW4gYnJpZWYsIEZTRiBzdXBwb3J0cyBjaGlsZHJlbiwgeW91dGggYW5kIHJ1cmFsIGNvbW11bml0aWVzIHdobyBhcmUgbGl2aW5nIGluIHBvdmVydHkgYnkgcHJvdmlkaW5nOjwvcD4KPHA"
+"port": {"nmapscan": {"udp":[21,22,23]}},
+"port_scpecific": {"ntp":"123/udp", "tomcat":"8080/tcp"},
+
+/* FASE 03 Geolocation */
+"node_id": "1117464825",
+"node_ip": "66.155.40.250",
+"reverse_lookup": false,
+"geo": {"country":"NL", "city":"", "Altidude":"etc.."}
+
+/* FASE 04 Server */
+"irc-server":true/false,
+"bitcoin-server":true/false,
+"bittornet-server":true/false,
+"apache":true/false,
+"iis":true/false,
+"router":true/false,
+"proxy":true/false,
+
+/* FASE 05 Vulnerability Check */
+"POODLE":true/false,
+"BEAST":true/false,
+"FREAK":true/false,
+"BREACH":true/false,
+"CRIME":true/false,
+"ShellShock":true/false,
+"HeartBleed"true/false,
+"RDPvulnerability":true/false,
+
+
+/* SCENARIO 03 Target By Template */
+
+/* FASE 01 Basic Site Recon [DNS] */
+"node_id": "1117464825",
+"node_ip": ["66.155.40.250", "etc.."]
+"reverse_lookup": true/false,
+"reverse_lookup_name": "wordpress.org",
+"zone_transfer":true/false,
+"cert":true/false,
+
+/* FASE 02 Web Based Recon [WEB] */
+"sub_domains":  ["bruteforce", "common_list", "google_search", "bing_search", "yahoo_search"]
+"url": {"full":"http://www.wordpress.org", "base":"wordpress.org", "scheme":"http://", "urlparse":"etc.."}
+"url_spider": ["spider_web_for_href"],
+"url_form_page": ["found_form_on_page"],
+"discover": {
+  "wordpress": {"theme":"theme_name", "plugin": ["plugin1", "plugin2", "etc.."], "version":"4.2.2", "readme.html":true, "robots.txt":true, "wp-admin":true, "path_traversal": ["PATH1", "PATH2", "etc.."]},
+  "drupal": {},
+  "joomla": {},
+}
+
+/* FASE 03 Basic Server Recon [SERVER] */
+"banner": "BASE64 SW4gYnJpZWYsIEZTRiBzdXBwb3J0cyBjaGlsZHJlbiwgeW91dGggYW5kIHJ1cmFsIGNvbW11bml0aWVzIHdobyBhcmUgbGl2aW5nIGluIHBvdmVydHkgYnkgcHJvdmlkaW5nOjwvcD4KPHA"
+"port": {"nmapscan": {"udp":[21,22,23]}},
+"port_scpecific": {"ntp":"123/udp", "tomcat":"8080/tcp"},
+"irc-server":true/false,
+"bitcoin-server":true/false,
+"bittornet-server":true/false,
+"apache":true/false,
+"iis":true/false,
+"router":true/false,
+"proxy":true/false,
+
+/* FASE 04 Web Based Attack [WEB] */
+"discover": {"if_dicover_is":true, "attack": "wordpress_etc.."},
+"xss": "Nimbus XSS Scanner",
+"sql": "Nimbus SQL Scanner"
+
+/* FASE 05 Server Based Attack [SERVER] */
+"POODLE":true/false,
+"BEAST":true/false,
+"FREAK":true/false,
+"BREACH":true/false,
+"CRIME":true/false,
+"ShellShock":true/false,
+"HeartBleed"true/false,
+"RDPvulnerability":true/false,
+
+
+
+
+
+
+
+
+/* WHICH SENARIO */
+
+/* FASE 06 REPORT */
+"web_gui": "flask",
+"nodes": "neo4j",
+"pdf": "generate_pdf",

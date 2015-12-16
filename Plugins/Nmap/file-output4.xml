@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 6.47 scan initiated Thu Nov 12 14:04:17 2015 as: nmap -Pn -sS -p U:123 -vv -oX file-output4.xml 217.149.143.62 -->
+<nmaprun scanner="nmap" args="nmap -Pn -sS -p U:123 -vv -oX file-output4.xml 217.149.143.62" start="1447333457" startstr="Thu Nov 12 14:04:17 2015" version="6.47" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="0" services=""/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1447333457"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1447333457"/>
+<taskbegin task="SYN Stealth Scan" time="1447333457"/>
+<taskend task="SYN Stealth Scan" time="1447333457" extrainfo="0 total ports"/>
+<host starttime="1447333457" endtime="1447333457"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="217.149.143.62" addrtype="ipv4"/>
+<hostnames>
+<hostname name="ams-er8-gls.v77.signet.nl" type="PTR"/>
+</hostnames>
+<ports></ports>
+</host>
+<runstats><finished time="1447333457" timestr="Thu Nov 12 14:04:17 2015" elapsed="0.11" summary="Nmap done at Thu Nov 12 14:04:17 2015; 1 IP address (1 host up) scanned in 0.11 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -10,28 +10,24 @@ class DatabaseController(object):
     """
     def __init__(self, *args):
         import os
-        """
-        {'dbs': False, 'status': False, 'pid': False, 'start': True, 'stop': False, 'add': False}
-        """
+
         self.name = "MongoDB Manage Object"
         self.args = args[0]
         self.full_path = os.path.dirname(os.path.realpath(__file__))
         self.server_file = "server.sh"
 
-        if self.args['start']:
-            """
-            IF STATUS [DOWN]; then
-            """
+        # print(self.args)
+
+        if self.args['start'] and self.args['stop']:
+            sprint("You can not START and STOP the Database at the same time!")
+
+        elif self.args['start']:
             self.mongo("start")
 
-
-        if self.args['stop']:
-            """
-            IF STATUS [UP]; then
-            """
+        elif self.args['stop']:
             self.mongo("stop")
 
-        if self.args['status']:
+        elif self.args['status']:
             self.mongo("status")
 
         # self.status()

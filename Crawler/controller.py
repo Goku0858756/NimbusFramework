@@ -246,6 +246,7 @@ class Spiderling(Crawler):
         Als nieuwe link niet in Lijst staat Voeg toe in Queue
     """
     def __init__(self):
+        super(Spiderling, self).__init__()
 
         if self.queue.empty() != True:
             self.crawl()

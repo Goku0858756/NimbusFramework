@@ -9,7 +9,7 @@ from Database import controller as dbs
 # mongod --pidfilepath ~/NimbusFramework/NimbusFramework/Database/dbmongo.pid
 
 # TODO: Create Basic Crawler [√]
-# TODO: Create MassScanner
+# TODO: Create MassScanner [√]
 # TODO: Create Plugins
 # TODO: Plugins: Gmail [√]
 # TODO: Create System [√]
@@ -19,7 +19,7 @@ from Database import controller as dbs
 # TODO: CommandLineInterface [√]
 
 # MOST IMPORTANT
-# TODO: Threading
+# TODO: Threading [√]
 # TODO: Services
 # TODO: Modules [√]
 # TODO: Plugins [√]
@@ -55,7 +55,7 @@ from Database import controller as dbs
 [!] *                         COMMAND LiST MODULES                         *
 [!] ************************************************************************
 [!]
-[!] harvest     [DNS, IP range, Emails, Phone-numbers, wp-admins, sub-domains(fierce) ]
+[!] harvest     [DNS, IP range, Emails, Phone-numbers, wp-admins, sub-domains(fierce), NAS,  ]
 [!] discover    [frameworks, ]
 [!] scan        [port, ip, ]
 [!] add         [target, proxy, vpn, chains(strategy),  ]
@@ -79,17 +79,22 @@ class Nimbus(object):
     can give new orders to its Framework Object
     """
 
+    _pinned_target = {}
+    _running_services = {}
+
     def __init__(self):
         import os
-        self.name = "Nimbus Object"
+        self.name = "Nimbus Shared Object"
         self.id = id(self)
         self.thread_id = os.getpid()
 
     def __str__(self):
         return str(self.__class__.__name__)
 
-    def test_method(self):
+    def __test_method(self):
         print("This is a test method for inherritence")
+
+
 
 def main():
     try:

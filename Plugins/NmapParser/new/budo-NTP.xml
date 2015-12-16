@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 6.47 scan initiated Wed Nov 18 11:59:58 2015 as: nmap -sU -p 123 -oX budo-NTP.xml 141.138.136.234 -->
+<nmaprun scanner="nmap" args="nmap -sU -p 123 -oX budo-NTP.xml 141.138.136.234" start="1447844398" startstr="Wed Nov 18 11:59:58 2015" version="6.47" xmloutputversion="1.04">
+<scaninfo type="udp" protocol="udp" numservices="1" services="123"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1447844398" endtime="1447844398"><status state="up" reason="syn-ack" reason_ttl="58"/>
+<address addr="141.138.136.234" addrtype="ipv4"/>
+<hostnames>
+<hostname name="host.globalspott.com" type="PTR"/>
+</hostnames>
+<ports><port protocol="udp" portid="123"><state state="open" reason="udp-response" reason_ttl="58"/><service name="ntp" method="table" conf="3"/></port>
+</ports>
+<times srtt="24816" rttvar="21127" to="109324"/>
+</host>
+<runstats><finished time="1447844398" timestr="Wed Nov 18 11:59:58 2015" elapsed="0.12" summary="Nmap done at Wed Nov 18 11:59:58 2015; 1 IP address (1 host up) scanned in 0.12 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
