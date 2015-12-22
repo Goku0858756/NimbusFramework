@@ -1,0 +1,138 @@
+
+
+
+    {% if func == "add" %}
+
+        <div class="page-header">
+          <h1>Add {{ component }} <small></small> </h1>
+        </div>
+
+        <form action="" method="post" class="form-horizontal">
+          <div class="form-group">
+            <label for="target_name" class="col-md-2 control-label">Name</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="target_name" name="name" placeholder="Company Name" autofocus>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="target_description" class="col-md-2 control-label">Description</label>
+            <div class="col-md-8">
+              <textarea class="form-control" id="target_description" rows="3" name="description" placeholder="Description about the victim"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="target_hosts" class="col-md-2 control-label">Host(s)</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="target_hosts" name="target" placeholder="123.456.789, 112.334.556">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="target_dns" class="col-md-2 control-label">DNS</label>
+            <div class="col-md-7">
+              <input type="text" class="form-control" id="target_dns" name="target" placeholder="Nameserver">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+
+            <label for="target_url" class="col-md-2 control-label">URL(s)</label>
+            <div class="col-md-7">
+              <input type="text" class="form-control" id="target_url" name="target" placeholder="http://www.example.com">
+
+                <!--<div class="input-group">-->
+                  <!--<span class="input-group-addon" id="basic-addon3">http://www.</span>-->
+                  <!--<input type="text" class="form-control"  name="target_url" id="target_url" aria-describedby="basic-addon3">-->
+                <!--</div>-->
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Register New Victim</button>
+            </div>
+          </div>
+        </form>
+
+    {% elif func == "overview" %}
+
+
+        <div class="page-header">
+            <div class="col-md-4 pull-right">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Go!</button>
+                  </span>
+                </div><!-- /input-group -->
+            </div> <!-- col-md-4 pull-right end -->
+          <h1>Overview {{ component }} <small></small> </h1>
+        </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Active Scanning Overview</div>
+
+
+
+        <table id="table "
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-click-to-select="true"
+               class="table">
+            <thead>
+                <tr>
+                    <th width="100px" data-field="id">ID</th>
+                    <th width="100px" data-field="date">Date</th>
+                    <th data-field="name">Name</th>
+                    <th width="150px" data-field="method">Scan Method</th>
+                    <th width="150px" data-field="status">Status</th>
+                    <th width="100px" data-field="icon">icon</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr class='clickable-row' data-href='url://some-other-link/'>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+
+                <tr data-index="1">
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    {% elif func == "edit" %}
+        <form action="" method="post" class="form-horizontal">
+          <div class="form-group">
+            <label for="victim_name" class="col-md-2 control-label">EDIT TARGET PAGE</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="victim_" name="name" placeholder="Company Name" autofocus>
+            </div>
+          </div>
+        </form>
+    {% endif %}
+
+

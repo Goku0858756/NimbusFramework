@@ -82,6 +82,8 @@
 "iis":true/false,
 "router":true/false,
 "proxy":true/false,
+"akamai":true/false,
+
 
 /* FASE 05 Vulnerability Check */
 "POODLE":true/false,

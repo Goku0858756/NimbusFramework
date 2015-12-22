@@ -4,7 +4,6 @@ __author__ = 'N05F3R4TU'
 # QUEUE BASED VERSION
 
 import socket
-import sys
 import threading
 from queue import Queue
 

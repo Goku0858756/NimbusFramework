@@ -2,10 +2,18 @@ __author__ = 'N05F3R4TU'
 import xml.sax
 from pymongo import MongoClient
 
-def db(doc):
-    database = MongoClient("localhost", 27017, connect=True)
-    print(database["nmap"]["scan17"].insert_one(doc))
+DATABASE = ""
 
+def db(doc):
+    try:
+        database = MongoClient("localhost", 27017)
+        print(database["nmap"]["scan17"].insert_one(doc))
+    except Exception as e:
+        print("[ DB EXCEPTION ]" + str(e))
+    finally:
+        print("always close your connection")
+        database.close()
+        print("connection closed .. ")
 
 class Nmap2Mongo(xml.sax.ContentHandler):
 
@@ -169,10 +177,9 @@ class Nmap2Mongo(xml.sax.ContentHandler):
 
 if __name__ == '__main__':
 
-
     n = Nmap2Mongo()
-    xml.sax.parse(open("new/budo-sV.xml"), n)
+    xml.sax.parse(open("new/budo-NTP.xml"), n)
     print("DONE")
-    # db(doc=n.nmap_output)
     # print("DB Done")
     print(n.nmap_output)
+    db(doc=n.nmap_output)

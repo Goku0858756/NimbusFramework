@@ -1,22 +1,22 @@
 #!/usr/bin/env python
-__author__ = 'N05F3R4TU'
 from colorama import Fore, Back, Style, init
-from time import sleep
+from sprint import Sprint
+
+__author__ = 'N05F3R4TU'
 
 init(autoreset=True)
-_MODE = "[ CRAWLER|MODE ]"
+# _MODE = "[ CRAWLER|MODE ]"
+#
+# def sprint(string, mode=_MODE):
+#
+#     if mode is None:
+#         print("nimbus \> %s" % string)
+#     else:
+#         print("nimbus " + Back.RED + Fore.GREEN + "{}".format(mode) + Style.RESET_ALL + " \> {}".format(string))
 
 
-def sprint(string, mode=_MODE):
 
-    if mode is None:
-        print("nimbus \> %s" % string)
-    else:
-        print("nimbus " + Back.RED + Fore.GREEN + "{}".format(mode) + Style.RESET_ALL + " \> {}".format(string))
-
-
-
-class Arachnida:
+class Arachnida(Sprint):
     """
     Arachnida Mother Crawler Object as Abstract as Possible
     @design-pattern:
@@ -27,14 +27,19 @@ class Arachnida:
     def __init__(self):
         """[ CRAWLER ] Just Crawling Around"""
         import argparse
-        self.session_name = "nimbus " + Back.RED + Fore.GREEN + "{}".format(_MODE) + Style.RESET_ALL + " \> "
+        super()
+        self.modus = "[ CRAWLER|MODE ]"
+        self.colors = {"back": Back.RED, "fore": Fore.GREEN}
+        self.session_name = "nimbus " + self.colors['back'] + self.colors['fore'] + "{}".format(self.modus) + Style.RESET_ALL + " \> "
+
         self.session_id = id(self)
         self.session_crawl = True
+
 
         from Core.banners import Banners
         Banners.arachnida(self)
 
-        sprint("ACTIVATED")
+        self.sprint("ACTIVATED", mode=self.modus)
 
         self.parser = argparse.ArgumentParser(prog="Nimbus Framework [CRAWLER|MODE ]", description="Need it any description?", argument_default=None, epilog="Nimbus // Rain with Rage, Exploit with Love")
         self.parser.add_argument('command', help="Use command to begin")
@@ -42,13 +47,13 @@ class Arachnida:
         while self.session_crawl:
             self.command = input(self.session_name)
             if not self.command:
-                sprint("No Command Given")
+                self.sprint("No Command Given", mode=self.modus)
                 continue
             else:
                 import re
 
                 if re.match("-", self.command.split()[0]):
-                    sprint("Wrong! Dont use OPTIONS but choose a COMMAND")
+                    self.sprint("Wrong! Dont use OPTIONS but choose a COMMAND", mode=self.modus)
                     print(self.usage())
                     continue
                 else:
@@ -61,12 +66,11 @@ class Arachnida:
 
                         elif not hasattr(self, self.args.command):
 
-                            sprint("Unrecognized command")
-                            sprint("try again pall")
-                            sleep(1)
-                            sprint("*" * 40 + "\n")
+                            self.sprint("Unrecognized command", mode=self.modus)
+                            self.sprint("try again pall", mode=self.modus)
+                            self.sprint("*" * 40 + "\n")
                             print(self.usage(), "\n")
-                            sprint("*" * 40 + "\n")
+                            self.sprint("*" * 40 + "\n")
                             continue
                         else:
                             print("%s\n%s\n%s" % ("*"*40, "* If you see this message, something went HORRIBLY wrong! Call for help!", "*"*40))
@@ -93,7 +97,7 @@ class Arachnida:
 
         banner.randomize()
         for attr in [attr for attr in dir(self) if inspect.ismethod(getattr(self, attr))]:
-            if attr not in ["usage", "__init__", "__del__", "__str__", "methods"]:
+            if attr not in ["usage", "__init__", "__del__", "__str__", "methods", "sprint"]:
                 # print("%s\t\t\t%s" % (attr, getattr(self, attr).__doc__))
                 commands.add_row([attr, getattr(self, attr).__doc__])
         return commands

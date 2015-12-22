@@ -1,0 +1,140 @@
+
+
+
+    <!--<div class="">-->
+        <!--<h1>Create new template with these Modules</h1>-->
+    <!--</div>-->
+    <!--<hr>-->
+
+    <ol style="color:#fff;">
+        <li>Template Name</li>
+        <li>threads: ive how many Threads you want to use default is 1</li>
+        <li>template id</li>
+    </ol>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/xss-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Cross Site Scripting</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/spider-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Nimbus Spider</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>SQL Injection</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Ghost Vuln.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>ShellShock</p>
+            <p><a href="#" class="btn btn-success" role="button">Activated</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Port Scanning</p>
+            <p><a href="#" class="btn btn-danger" role="button">Deactivated</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/xss-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Cross Site Scripting</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/spider-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Nimbus Spider</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>SQL Injection</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Ghost Vuln.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>ShellShock</p>
+            <p><a href="#" class="btn btn-success" role="button">Activated</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="{{ url_for('static', filename='img/sql-512.png') }}" alt="...">
+          <div class="caption">
+            <p>Port Scanning</p>
+            <p><a href="#" class="btn btn-danger" role="button">Deactivated</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="clear-fix" id="toolbar">
+      <p>
+        <div class="pull-right"><button id="buttonTable" class="btn btn-primary">Get Selection</button></div>
+        <form method="get" action="/victim/template">
+            <input class="btn primary" type="submit" value="Submit">
+        </form>
+      </p>
+    </div>
+

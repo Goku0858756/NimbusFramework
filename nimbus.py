@@ -1,8 +1,5 @@
 __author__ = 'N05F3R4TU'
 import core
-from Modules import controller as mods
-from Plugins import controller as plugs
-from Database import controller as dbs
 
 # TODO: Nimbus Own Envirement [ @startup ]
 # TODO: PID file tracking
@@ -10,7 +7,7 @@ from Database import controller as dbs
 
 # TODO: Create Basic Crawler [√]
 # TODO: Create MassScanner [√]
-# TODO: Create Plugins
+# TODO: Create Plugins [√]
 # TODO: Plugins: Gmail [√]
 # TODO: Create System [√]
 # TODO: System: [ check for ] Update
@@ -31,8 +28,8 @@ from Database import controller as dbs
 # TODO: IRCBot Refactor Code [√]
 # TODO: Subdomain Scanner Import
 # TODO: SocksScanner Import
-# TODO: Nmap Scanner Import
-# TODO: Banner Grabbing Code Refactor
+# TODO: Nmap Scanner Import [√]
+# TODO: Banner Grabbing Code Refactor [√]
 
 # TODO: Crawler Code Refactor
 # TODO: Virtual Env. Auto Deployment
@@ -44,9 +41,8 @@ from Database import controller as dbs
 
 
 
-# Design Patterns
 # facade system
-#
+
 
 
 
@@ -67,7 +63,52 @@ from Database import controller as dbs
 [!]
 """
 
-""" I wanna know the state of the Database"""
+
+
+
+user = {"username":"tester", "password": "secret"}
+
+
+def logincheck(func):
+
+    def inner(*args, **kwargs):
+        from Core.banners import Banners
+        b = Banners()
+        b.pirate()
+
+        print("[!]          AAARRR! Who be traspassin ?")
+        keyword = input("[!]          What be the keyword: ")
+
+        if keyword != user["password"]:
+            print("Invalid")
+        else:
+            print("Password correct!")
+            return func(*args, **kwargs)
+    return inner
+
+
+def services(func):
+    import time
+    """
+        Check Services Before Start
+    """
+
+    def inner(*args, **kwargs):
+        print("Checking If All Services Are Started Before we go on!")
+        time.sleep(2)
+        print("There we Go")
+        time.sleep(1)
+        print("[ Nimbus Database Engine ]")
+        print("[ Nimbus Search Engine Installed ]")
+        print("[ Checking for internet connection ]")
+        print("[ Checking for updates ]")
+
+        print("Lets GO! Hack!@")
+        time.sleep(1)
+
+        return func(args, kwargs)
+    return inner
+
 
 class Nimbus(object):
     """
@@ -81,6 +122,8 @@ class Nimbus(object):
 
     _pinned_target = {}
     _running_services = {}
+    _shared_modus = ""
+    _shared_targets = []
 
     def __init__(self):
         import os
@@ -96,10 +139,11 @@ class Nimbus(object):
 
 
 
-def main():
+
+@services
+def main(*args, **kwargs):
     try:
         app = core.Framework()
-
     except KeyboardInterrupt as k:
         print("\n\n\t*** [ KEYBOARD INTERRUPT ] ***\n\n")
 

@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ super() }} | Active Scans{% endblock %}
+
+{% block styles %}
+    <script src="/static/js/zingchart.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-header">
+      <h1>{% filter upper %}Scans Overview {% endfilter %}<small></small></h1>
+    </div>
+
+    <div class="row">
+        <div id="changeit" class="col-md-3">
+            <h3>12,938<br><p class="lead">TOTAL SCANNED</p></h3>
+        </div>
+        <div class="col-md-3">
+            <h3 id="found2">43.634<br><p class="lead">VICTIMS SCANNED</p></h3>
+
+            <p>
+              <form method="GET">
+                <!--<button type="button" class="btn btn-primary" id="db">Check from DB</button>-->
+                <input class="btn primary" type="submit" value="Get From DB">
+              </form>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">XSS FOUND</p></h3>
+        </div>
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">SQL INJ. FOUND</p></h3>
+        </div>
+
+
+            <p>
+              <button type="button" class="btn btn-primary" id="fire">Change By Ajax</button>
+            </p>
+    </div>
+
+
+
+
+    <div class="page-header">
+      <h1>{% filter upper %}Active Scans {% endfilter %} </h1>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Active Scanning Overview</div>
+        <table id="table"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-click-to-select="true"
+               class="table">
+            <thead>
+                <tr>
+                    <th width="25px" class="bs-checkbox" scope="row">
+                        <input data-index="0" name="btSelectItem" type="checkbox">
+                    </th>
+                    <th width="100px" data-field="id">ID</th>
+                    <th width="100px" data-field="date">Date</th>
+                    <th data-field="name">Name</th>
+                    <th width="150px" data-field="method">Scan Method</th>
+                    <th width="150px" data-field="status">Status</th>
+                    <th width="100px" data-field="icon">icon</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                <tr data-index="0">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="0" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+                <tr data-index="1">
+                    <td class="bs-checkbox" scope="row">
+                        <input data-index="1" name="btSelectItem" type="checkbox">
+                    </td>
+                    <td style="">1000234</td>
+                    <td style="">2015-01-09</td>
+                    <td style="">Gemeente Pijnacker</td>
+                    <td style="">Webserver</td>
+                    <td style="">Scanning</td>
+                    <td style="">icon</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+    <li class="next disabled"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<script>
+    $("#fire").click(function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("changeit").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.open("GET", "/static/ajax_info2.txt", true);
+        xhttp.send();
+    });
+
+
+
+    function change() {
+        var xhttp, doc, txt;
+        xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("changeit").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.open("GET", "/static/ajax_info.txt", true);
+        xhttp.send();
+    }
+
+    $("document").ready(function() {
+        setInterval(change, 1000);
+    });
+
+
+
+
+</script>
+{% endblock %}

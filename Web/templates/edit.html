@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ super() }} | {{ component }} {% endblock %}
+
+{% block body %}
+
+    {% with func="edit" %}
+        {% if component == "target" %}
+            {% include 'target.html' %}
+        {% elif component == "template" %}
+            {% include 'template.html' %}
+        {% elif component == "schedule" %}
+            {% include 'schedule.html' %}
+        {% endif %}
+    {% endwith %}
+
+{% endblock %}

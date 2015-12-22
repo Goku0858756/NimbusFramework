@@ -16,18 +16,20 @@ def epi():
 def sprint(string):
     print("nimbus \> %s" % string)
 
+
 class Framework(Nimbus):
 
     def __init__(self):
         # Shared Target From Nimbus as Mother Object
-        print("$$$$$$$$$$$$$$$$$$$$$$$$")
-        print(self._pinned_target)
-        print("$$$$$$$$$$$$$$$$$$$$$$$$")
+        # print("$$$$$$$$$$$$$$$$$$$$$$$$")
+        # print(self._pinned_target)
+        # print("$$$$$$$$$$$$$$$$$$$$$$$$")
 
         self.session_name = "nimbus \> "
         self.session_state = True
         self.session_id = id(self)
         self.function_name = ""
+        self._shared_modus = "nimbus \> "
 
         self.parser = argparse.ArgumentParser(prog="Nimbus Framework", description="Need it any description?", argument_default=None, epilog="Nimbus // Rain with Rage, Exploit with Love")
         self.parser.add_argument('command', help="Use command to begin")
@@ -44,6 +46,8 @@ class Framework(Nimbus):
                     sprint("Wrong! Dont use OPTIONS but choose a COMMAND")
                     print(self.usage())
                     continue
+                elif self.command.split()[0] == "?":
+                    print(self.usage())
                 else:
                     self.args = self.parser.parse_args(self.command.split()[0:1])
 
@@ -67,8 +71,6 @@ class Framework(Nimbus):
                             print("%s\n%s\n%s" % ("*"*40, "* If you see this message, something went HORRIBLY wrong! Call for help!", "*"*40))
                     except Exception as e:
                         print("[ EXCEPTION ]", str(e))
-
-
 
     def __str__(self):
         print(self.__dict__)
@@ -109,11 +111,19 @@ class Framework(Nimbus):
         from Modules.Crawler.controller import Arachnida
         sprint("Calling for Arachnida")
 
-        # from Core.banners import Banners
-        # Banners().arachnida()
-
         crawler = Arachnida()
 
+    def web_gui(self):
+        """[ WEB ] Web Interface to Control Scans and Targets"""
+        self.function_name = "web"
+        sprint("start web Gui Interface")
+        from threading import Thread
+        from Web.controller import start_web
+
+        t = Thread(target=start_web, name="WebGUI")
+        t.start()
+        print("After Thread Started")
+        return
 
     def config(self):
         """[ CONFIG ] This option is to configure the framework"""
@@ -152,6 +162,55 @@ class Framework(Nimbus):
                 sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
             finally:
                 break
+
+    def scan(self):
+        """[ NMAP ] Integrated Nmap Scanner"""
+        self.function_name = "scan"
+        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Nimbus Scannning the Worlds Dangerous places", add_help=True)
+        shell = parser.add_argument_group("  ### Shell Interactive Mode".upper(), description="{}".format("-"*40))
+
+        while self.session_state:
+            try:
+                if not self.command.split()[1:]:
+                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+                    break
+                elif self.command.split()[1:]:
+
+                    parser.add_argument("-i", dest="ip", action="store", help="Give me a Host IP to perfom a scan")
+                    parser.add_argument("-u", dest="url", action="store", help="You have a url for me to scan? Just gimmi ;)")
+                    parser.add_argument("-v", dest="verbose", action="store_true", default=False, help="Vebose default is False")
+
+
+
+                    # Shell Mode Scanner
+                    shell.add_argument("--shell", dest="shell", action="store_true", default=False, help="Interactive Mode On/Off")
+
+                    args = parser.parse_args(self.command.split()[1:])
+
+
+                    if vars(args)['shell']:
+                        # First check if SHELL MODE is Activated
+                        from Plugins.NmapScanner.controller import NmapScanner
+                        # shell_mode = Target()
+                        print(args.shell)
+                    else:
+                        # If SHell Mode is not Activated, what do you want to do?
+                        from Plugins.NmapScanner.controller import NmapScanner
+                        scan = NmapScanner(ip=args.ip, name=args.url, verbose=args.verbose)
+                        scan.scan()
+
+
+
+                    """ here we import the method and call the object with our args """
+                    # from Database.controller import DatabaseController
+                    # DatabaseController(vars(args))
+
+            except Exception as e:
+                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
+            finally:
+                break
+
+
 
     def sqli(self):
         """[ SQL INJECTION ] Injection audit"""
@@ -337,7 +396,7 @@ class Framework(Nimbus):
         """ --geo """
 
         # [ SERVER          ] ([ Apache, IIS, Linux, OSX, IRC, Bitcoin, Gaming, Modem, Router])
-        """ --soft """
+        """ --server """
 
         # [ OS              ] ([Win XP, Win7, OSX, Linux, Solaris, ... ])
         """ --os """
@@ -345,9 +404,33 @@ class Framework(Nimbus):
         # [ VULNERABILITY   ] ([POODLE, XSS, SQL, CSRF, HeartBleed, ])
         """ --vuln """
 
+        # [ SOFTWARE        ] ([Tomcat, Akamai, Flash, Jenkins etc ...])
+        """ --soft """
+
         # [  STRATEGY       ] (Result of Strategy Scanning)
         """ --str """
 
+        """
+            filter      [ protocol; ip; port; cms; software; os; vulnerability; server; framework; dns; charset; website;]
+            type        [ protocol: [ DNS, FTP, FTPS, SSH, SSL, TLS, POP, IMAP, SMTP, SNMP, TELNET, GOPHER, HTTP, NTP/NNTP, HTTPS, UUCP, XMPP, SMB, CWMP]]
+            quantity    [ top##; bot##; max##; min##; ]
+            version     [ <; >; =; !; ] { e.g. find cms:drupal:=v3.1 }
+            geolocation [ geo:COUNTRY ] { e.g. find xxxxx:xxxx geo:nl or geo:netherlands }
+
+
+            Examples:
+            find top25:cms:wordpress:=v4.3.1 geo:pl
+            :returns Top 25 found of wordpress sites with Version 4.3.1. in Poland
+
+            find prot:http:top30 vuln:xss
+            :returns List of 30 websites where found xss vulnerabilities
+
+            find server:iis:<v7.0 vuln:poodle
+            :returns All Servers that is running on a Microsoft IIS platform with Version Less then 7.0 are found to be vulnerabile to a poodle attack
+            find server:iis:<v7.0 vuln:true/false
+            :returns Same as before, but All servers Are vulnerable { boolean }
+
+        """
 
         self.function_name = "find"
         parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Nimbus Searches with Thunder", add_help=True)

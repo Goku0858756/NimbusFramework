@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ super() }} | Index-Page-Title{% endblock %}
+
+{% block styles %}
+    <script src="/static/js/zingchart.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="/static/js/datamaps.world.min.js"></script>
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="page-header">
+      <h1>{{ category }} <small>{{ context }}</small></h1>
+    </div>
+
+    <!--<div id="worldmap" style="position: relative;"></div>-->
+
+    <div>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="home">
+            <h1>sdfvdfs sfdbsdf bdfgb b dfgbsdfb dfgb dfgsb sdb<br><small>sfdsafsd sfdgdf</small><p class="lead">sdfds sdfsdf</p> </h1></div>
+        <div role="tabpanel" class="tab-pane fade" id="profile">
+            <h1>3453345345345<br><small>ddddh hhhhfghfgh  fhggfh sfdgdf</small><p class="lead">45656h dfhdfdh dhdfhdfgd dfgddfg</p> </h1></div>
+        <div role="tabpanel" class="tab-pane fade" id="messages">
+            <h1>sdft45td dfghffhgfghf gfdgdfdfgdfggdf ddfggfggddfdfgdf 65546 fg sdb<br><small>zx434</small><p class="lead">sdfds 345345 34534 ergergerg</p> </h1></div>
+        <div role="tabpanel" class="tab-pane fade" id="settings">
+                <div style="padding:20px;">
+                    <div class="row">
+                        <div class="col-md-4"><div id='myChart'></div></div>
+                        <div class="col-md-4"><div id='secChart'></div></div>
+                        <div class="col-md-4"><div id='thirdChart'></div></div>
+                    </div>
+                </div>
+        </div>
+      </div>
+
+    </div>
+
+
+<script>
+    zingchart.THEME = "classic";
+
+    var myConfig = {
+      "globals": {
+        "font-family": "Lato",
+        "font-weight": "100"
+      },
+      "graphset": [{
+        "type": "ring",
+        "background-color": "#252830",
+        "tooltip": {
+          "visible": 0
+        },
+        "plotarea": {
+          "margin": "0% 0% 0% 0%"
+        },
+        "plot": {
+          "slice": 90,
+          "ref-angle": 180,
+          "detach": true,
+          "hover-state": {
+            "visible": true
+          },
+          "value-box": {
+            "visible": true,
+            "type": "first",
+            "connected": true,
+            "placement": "center",
+            "text": "<span style='font-size:40px;'>402</span><br>  Total Nodes",
+            "rules": [{
+              "rule": "%v > 50",
+              "visible": false
+            }],
+            "font-color": "#c0c2c5",
+            "font-size": "20px"
+          },
+          "animation": {
+            "delay": 0,
+            "effect": 2,
+            "speed": "600",
+            "method": "0",
+            "sequence": "1"
+          }
+        },
+        "series": [{
+          "values": [25],
+          "background-color": "#42a5f5",
+          "border-color": "#282E3D",
+          "border-width": "2px",
+          "shadow": 0
+        }, {
+          "values": [75],
+          "background-color": "#1bc98e",
+          "border-color": "#282E3D",
+          "border-width": "2px",
+          "shadow": 0
+        }]
+      }]
+    };
+</script>
+
+  <script>
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+  </script>
+
+<script>
+      zingchart.render({
+      id: 'secChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+
+</script>
+
+<script>
+      zingchart.render({
+      id: 'thirdChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+
+</script>
+
+<!--<script>-->
+    <!--var map = new Datamap({-->
+        <!--element: document.getElementById('worldmap'),-->
+        <!--responsive: true-->
+    <!--});-->
+
+    <!--window.addEventListener('resize', function() {-->
+        <!--map.resize();-->
+    <!--});-->
+
+    <!--//alternatively with d3-->
+    <!--d3.select(window).on('resize', function() {-->
+        <!--map.resize();-->
+    <!--});-->
+
+    <!--//alternatively with jQuery-->
+    <!--$(window).on('resize', function() {-->
+       <!--map.resize();-->
+    <!--});-->
+<!--</script>-->
+
+
+
+{% endblock %}

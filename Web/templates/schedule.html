@@ -1,0 +1,72 @@
+    {% if func == "add" %}
+
+        <ol style="color:#fff;">
+            <li>Sidebar met opties</li>
+            <li>Kies voor welk klant :: dropdown? later search</li>
+            <li>Kies een scan soort of</li>
+            <li>of Kies een custom-made-template</li>
+            <li>menu options :: mail when finished</li>
+        </ol>
+
+    {% elif func == "overview" %}
+
+
+            <div class="page-header">
+                <div class="col-md-4 pull-right">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search for...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">Go!</button>
+                      </span>
+                    </div><!-- /input-group -->
+                </div> <!-- col-md-4 pull-right end -->
+              <h1>Overview {{ component }} <small></small> </h1>
+            </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Active Scanning Overview</div>
+
+
+
+            <table id="table "
+                   data-toggle="table"
+                   data-toolbar="#toolbar"
+                   data-click-to-select="true"
+                   class="table">
+                <thead>
+                    <tr>
+                        <th width="100px" data-field="id">ID</th>
+                        <th width="100px" data-field="date">Date</th>
+                        <th data-field="name">Name</th>
+                        <th width="150px" data-field="method">Scan Method</th>
+                        <th width="150px" data-field="status">Status</th>
+                        <th width="100px" data-field="icon">icon</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr class='clickable-row' data-href='url://some-other-link/'>
+                        <td style="">1000234</td>
+                        <td style="">2015-01-09</td>
+                        <td style="">Gemeente Pijnacker</td>
+                        <td style="">Webserver</td>
+                        <td style="">Scanning</td>
+                        <td style="">icon</td>
+                    </tr>
+
+                    <tr data-index="1">
+                        <td style="">1000234</td>
+                        <td style="">2015-01-09</td>
+                        <td style="">Gemeente Pijnacker</td>
+                        <td style="">Webserver</td>
+                        <td style="">Scanning</td>
+                        <td style="">icon</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    {% elif func == "edit" %}
+    {% endif %}

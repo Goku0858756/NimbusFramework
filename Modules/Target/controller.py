@@ -1,35 +1,28 @@
 #!/usr/bin/env python
 from colorama import Fore, Back, Style, init
-from time import sleep
 from nimbus import Nimbus
+from sprint import Sprint
 
 __author__ = 'N05F3R4TU'
 __version__ = "2.1"
 __license__ = "Nimbus Corp"
 
 init(autoreset=True)
-_MODE = "[ TARGET|MODE ]"
 
-def sprint(string, mode=_MODE):
-
-    if mode is None:
-        print("nimbus \> %s" % string)
-    else:
-        print("nimbus " + Back.BLUE + Fore.YELLOW + "{}".format(mode) + Style.RESET_ALL + " \> {}".format(string))
-
-
-class Target(Nimbus):
+class Target(Nimbus, Sprint):
 
     def __init__(self):
         """[ TARGET ] Looking for VICTIMS"""
-
-
         import argparse
-        self.session_name = "nimbus " + Back.BLUE + Fore.YELLOW + "{}".format(_MODE) + Style.RESET_ALL + " \> "
+        super()
+        self.modus = "[ TARGET|MODE ]"
+        self.colors = {"back":Back.BLUE, "fore":Fore.YELLOW}
+        self.session_name = "nimbus " + self.colors['back'] + self.colors['fore'] + "{}".format(self.modus) + Style.RESET_ALL + " \> "
+
         self.session_id = id(self)
         self.session = True
 
-        sprint("ACTIVATED")
+        self.sprint("ACTIVATED")
 
         self.parser = argparse.ArgumentParser(prog="Nimbus Framework [CRAWLER|MODE ]", description="Need it any description?", argument_default=None, epilog="Nimbus // Rain with Rage, Exploit with Love")
         self.parser.add_argument('command', help="Use command to begin")
@@ -37,13 +30,13 @@ class Target(Nimbus):
         while self.session:
             self.command = input(self.session_name)
             if not self.command:
-                sprint("No Command Given")
+                self.sprint("No Command Given")
                 continue
             else:
                 import re
 
                 if re.match("-", self.command.split()[0]):
-                    sprint("Wrong! Dont use OPTIONS but choose a COMMAND")
+                    self.sprint("Wrong! Dont use OPTIONS but choose a COMMAND")
                     print(self.usage())
                     continue
                 else:
@@ -56,12 +49,11 @@ class Target(Nimbus):
 
                         elif not hasattr(self, self.args.command):
 
-                            sprint("Unrecognized command")
-                            sprint("try again pall")
-                            sleep(1)
-                            sprint("*" * 40 + "\n")
+                            self.sprint("Unrecognized command")
+                            self.sprint("try again pall")
+                            self.sprint("*" * 40 + "\n")
                             print(self.usage(), "\n")
-                            sprint("*" * 40 + "\n")
+                            self.sprint("*" * 40 + "\n")
                             continue
                         else:
                             print("%s\n%s\n%s" % ("*"*40, "* If you see this message, something went HORRIBLY wrong! Call for help!", "*"*40))
@@ -71,10 +63,10 @@ class Target(Nimbus):
 
 
     def __str__(self):
-        sprint(self.__dict__)
+        self.sprint(self.__dict__)
 
     def __del__(self):
-        sprint(self.__class__.__name__, "Destroyed")
+        self.sprint(self.__class__.__name__, "Destroyed")
         return self
 
     def usage(self):
@@ -90,7 +82,7 @@ class Target(Nimbus):
 
         banner.randomize()
         for attr in [attr for attr in dir(self) if inspect.ismethod(getattr(self, attr))]:
-            if attr not in ["usage", "__init__", "__del__", "__str__", "methods"]:
+            if attr not in ["usage", "__init__", "__del__", "__str__", "methods", "sprint"]:
                 # print("%s\t\t\t%s" % (attr, getattr(self, attr).__doc__))
                 commands.add_row([attr, getattr(self, attr).__doc__])
         return commands
@@ -170,12 +162,15 @@ class Target(Nimbus):
 
     def list(self):
         """[ LIST ] My Current Victim List"""
-        sprint("My current Hitlist")
-        print(self._pinned_target)
+        self.sprint("My current Hitlist")
+        print("PINNED TARGET: {}".format(self._pinned_target))
+        # print("SHARED TARGETS: {}".format(self._shared_targets))
+        for t in self._shared_targets:
+            print("SHARED TARGETS: {}".format(t))
 
     def active(self):
         """[ ACTIVE ] The poor Bastards, They will never see me coming"""
-        sprint("Victim which are being attacked")
+        self.sprint("Victim which are being attacked")
 
     def leave(self):
         """[ LEAVE ] Mode Gently"""
@@ -194,7 +189,7 @@ class Target(Nimbus):
         while session_target_add:
             try:
                 if not self.command.split()[1:]:
-                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+                    self.sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
                     break
                 elif self.command.split()[1:]:
                     parser.add_argument("-n", dest="name", action="store", default=None, help="Add target into system by Name")
@@ -207,7 +202,6 @@ class Target(Nimbus):
 
                     """ here we import the method and call the object with our args """
                     target = TargetAdd() # Instantiate Target Object
-                    print(target)
 
                     if args.template:
                         print(">>> By Template")
@@ -221,11 +215,14 @@ class Target(Nimbus):
                         elif args.url != None:
                             target.target_url = args.url
 
-                    self._pinned_target.update(vars(target))
+                    # self._pinned_target.update(vars(target))
+
+                    print(target)
+                    self._shared_targets.append(target)
 
 
             except Exception as e:
-                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
+                self.sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
             finally:
                 break
 
@@ -249,6 +246,11 @@ class TargetAdd(object):
 
     def __str__(self):
         return str(self.__dict__)
+
+
+target = TargetAdd()
+print(target)
+
 #
 #
 # if __name__ == '__main__':

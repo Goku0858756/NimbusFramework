@@ -1,0 +1,232 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ super() }} | Index-Page-Title{% endblock %}
+
+{% block styles %}
+    <script src="/static/js/zingchart.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/LatoLatin/latolatinfonts.css?family=LatoLatinWeb') }}">-->
+
+{% endblock %}
+
+{% block body %}
+
+{% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+{% endif %}
+
+<p>Do you want to <a href="{{ url_for('login') }}">log in?</a>
+
+
+<div id="inner">
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">sdgsdfsdfsf</div>
+        <div role="tabpanel" class="tab-pane" id="profile">...</div>
+        <div role="tabpanel" class="tab-pane" id="messages">...</div>
+        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+      </div>
+    </div>
+
+
+
+
+
+    <hr>
+    <div class="row">
+        <div class="col-md-4"><div id='myChart'></div></div>
+        <div class="col-md-4"><div id='secChart'></div></div>
+        <div class="col-md-4"><div id='thirdChart'></div></div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">PAGE VIEWS</p></h3>
+        </div>
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">PAGE VIEWS</p></h3>
+        </div>
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">PAGE VIEWS</p></h3>
+        </div>
+        <div class="col-md-3">
+            <h3>12,938<br><p class="lead">PAGE VIEWS</p></h3>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel heading without title</div>
+          <div class="panel-body">..
+          </div>
+          <ul class="list-group">
+            <a href="#" class="list-group-item"><span class="badge">14</span>Cras justo odio</a>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+        <p>
+          <button type="button" class="btn btn-primary">Default button</button>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel heading without title</div>
+          <div class="panel-body">..
+          </div>
+          <ul class="list-group">
+            <a href="#" class="list-group-item"><span class="badge">14</span>Cras justo odio</a>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+        <p>
+          <button type="button" class="btn btn-primary">Default button</button>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Panel heading without title</div>
+          <div class="panel-body">..
+          </div>
+          <ul class="list-group">
+            <a href="#" class="list-group-item"><span class="badge">14</span>Cras justo odio</a>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+        <p>
+          <button type="button" class="btn btn-primary">Default button</button>
+        </p>
+      </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+<script>
+    zingchart.THEME = "classic";
+
+    var myConfig = {
+      "globals": {
+        "font-family": "lato",
+        "font-weight": "100"
+      },
+      "graphset": [{
+        "type": "ring",
+        "background-color": "#252830",
+        "tooltip": {
+          "visible": 0
+        },
+        "plotarea": {
+          "margin": "0% 0% 0% 0%"
+        },
+        "plot": {
+          "slice": 90,
+          "ref-angle": 180,
+          "detach": true,
+          "hover-state": {
+            "visible": true
+          },
+          "value-box": {
+            "visible": true,
+            "type": "first",
+            "connected": true,
+            "placement": "center",
+            "text": "<span style='font-size:40px;'>402</span><br>  Total Nodes",
+            "rules": [{
+              "rule": "%v > 50",
+              "visible": false
+            }],
+            "font-color": "#c0c2c5",
+            "font-size": "20px"
+          },
+          "animation": {
+            "delay": 0,
+            "effect": 2,
+            "speed": "600",
+            "method": "0",
+            "sequence": "1"
+          }
+        },
+        "series": [{
+          "values": [25],
+          "background-color": "#42a5f5",
+          "border-color": "#282E3D",
+          "border-width": "2px",
+          "shadow": 0
+        }, {
+          "values": [75],
+          "background-color": "#1bc98e",
+          "border-color": "#282E3D",
+          "border-width": "2px",
+          "shadow": 0
+        }]
+      }]
+    };
+</script>
+
+  <script>
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+  </script>
+
+<script>
+      zingchart.render({
+      id: 'secChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+
+</script>
+
+<script>
+      zingchart.render({
+      id: 'thirdChart',
+      data: myConfig,
+      height: 275,
+      width: 275,
+      hideprogresslogo: true
+    });
+
+</script>
+
+<script>
+    $("document").ready(function() {
+        var el = document.getELementById("myChart-license");
+        el.remove();
+    });
+</script>
+{% endblock %}
