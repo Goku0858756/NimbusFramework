@@ -1,0 +1,214 @@
+[Target]
+bulkfile = 
+configfile = 
+direct = 
+googledork = 
+logfile = 
+requestfile = 
+sessionfile = 
+sitemapurl = 
+url = http://localhost:8888
+
+[Optimization]
+keepalive = False
+nullconnection = False
+optimize = True
+predictoutput = False
+threads = 1
+
+[Windows]
+regadd = False
+regdata = 
+regdel = False
+regkey = 
+regread = False
+regtype = 
+regval = 
+
+[User-defined function]
+shlib = 
+udfinject = False
+
+[Request]
+agent = 
+authcred = 
+authfile = 
+authtype = 
+checktor = False
+cookie = 
+cookiedel = 
+csrftoken = 
+csrfurl = 
+data = 
+delay = 0
+dropsetcookie = False
+evalcode = 
+forcessl = False
+headers = 
+host = 
+hpp = False
+ignoreproxy = False
+loadcookies = 
+method = 
+paramdel = 
+proxy = 
+proxycred = 
+proxyfile = 
+rparam = 
+randomagent = True
+referer = 
+retries = 3
+safefreq = 0
+safepost = 
+safereqfile = 
+safeurl = 
+skipurlencode = False
+timeout = 30
+tor = False
+torport = 0
+tortype = HTTP
+
+[Miscellaneous]
+alert = 
+answers = 
+beep = True
+cleanup = False
+dependencies = False
+disablecoloring = False
+googlepage = 1
+mobile = True
+offline = False
+pagerank = False
+purgeoutput = False
+smart = True
+verbose = 1
+wizard = False
+
+[Enumeration]
+col = 
+db = 
+dumpall = True
+dumptable = False
+dumpwhere = 
+excludecol = 
+excludesysdbs = True
+firstchar = 0
+getall = False
+getbanner = False
+getcolumns = False
+getcomments = False
+getcount = False
+getcurrentdb = False
+getcurrentuser = False
+getdbs = False
+gethostname = False
+getpasswordhashes = False
+getprivileges = False
+getroles = False
+getschema = False
+gettables = False
+getusers = False
+isdba = False
+lastchar = 0
+limitstart = 0
+limitstop = 0
+query = 
+search = False
+sqlfile = 
+sqlshell = False
+tbl = 
+user = 
+
+[Brute]
+commoncolumns = False
+commontables = False
+
+[Detection]
+code = 0
+level = 1
+notstring = 
+regexp = 
+risk = 1
+string = 
+textonly = False
+titles = False
+
+[File system]
+dfile = 
+rfile = 
+wfile = 
+
+[Takeover]
+msfpath = 
+osbof = False
+oscmd = 
+ospwn = False
+osshell = False
+ossmb = False
+privesc = False
+tmppath = 
+
+[Fingerprint]
+extensivefp = False
+
+[Injection]
+dbms = 
+dbmscred = 
+invalidbignum = False
+invalidlogical = False
+invalidstring = False
+nocast = False
+noescape = False
+os = 
+prefix = 
+skip = 
+skipstatic = False
+suffix = 
+tamper = 
+testparameter = 
+
+[General]
+batch = True
+charset = 
+crawldepth = 2
+crawlexclude = 
+csvdel = ,
+dumpformat = HTML
+eta = False
+flushsession = False
+forms = True
+freshqueries = False
+hexconvert = False
+outputdir = ~/OS/
+parseerrors = False
+pivotcolumn = 
+scope = 
+testfilter = 
+testskip = 
+trafficfile = 
+updateall = False
+
+[Hidden]
+binaryfields = 
+cputhrottle = 5
+disableprecon = False
+dummy = False
+forcedns = False
+identifywaf = True
+ignore401 = True
+livetest = False
+profile = False
+runcase = 
+skipwaf = False
+smoketest = False
+stopfail = False
+
+[Techniques]
+dnsname = 
+secondorder = 
+tech = BEUSTQ
+timesec = 5
+uchar = 
+ucols = 
+ufrom = 
+

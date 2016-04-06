@@ -1,8 +1,5 @@
 __author__ = 'N05F3R4TU'
 
-"""
-http://code.activestate.com/recipes/579064-hex-dump/
-"""
 
 def group(a, *ns):
   for n in ns:

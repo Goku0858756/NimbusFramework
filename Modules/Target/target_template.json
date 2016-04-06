@@ -1,0 +1,16 @@
+// document
+{
+
+  // Globals lvl1
+  "":"",
+
+  // Embedded lvl2
+  "crawler": {},
+  "dns": {},
+  "nmap": {},
+  "sqlmap": {},
+  "sqlbrute": {},
+  "shellshock": {},
+  "poodle": {}
+
+}

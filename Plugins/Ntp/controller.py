@@ -1,13 +1,4 @@
 __author__ = 'N05F3R4TU'
-"""
-Basic script to pull addresses from a NTP server using the monlist command. Can also output Maltego resultset.
-
-Gert Burger <gert A@T sensepost.com>
-SensePost (Pty) Ltd
-www.sensepost.com
-
-This work is licensed under the Creative Commons Attribution 2.5 South Africa License available at http://creativecommons.org/licenses/by/2.5/za/
-"""
 from struct import unpack, pack
 import socket
 import select
@@ -136,5 +127,3 @@ if __name__ == '__main__':
     else:
         print("\n".join(results))
         print("Number of results %s" % len(results))
-
-#spidermark sensepostdata ntp_monlist.py

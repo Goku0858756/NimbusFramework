@@ -1,0 +1,32 @@
+# Basic Settings for the Spiders
+setting:
+  follow_redirect: true
+  verbose: true                         # print all output to console
+  allow_scheme: ["http", "https"]       # list of allowed schemes
+  crawl_depth: 5                        # depth of crawling. To dissable set to; null
+  base_domain: true # crawl & stay only on base_domain
+  threads: 3                            # Amount of Spiders to use. use 1 - 5 Dont get caught!
+  modes: {scan: true, attack: false}    # available modes
+  timeout: null                         # setting timeouts, when crawling session get stuck; set in seconds
+
+# if you want to crawl a authenticated part of the site. Use this to login
+auth:
+  username: "testUsername"
+  password: ""
+  use_oauth: false
+  use_basic: true
+
+# Look like a human, not a bot
+defence:
+  randomize_user_agent: false           # randomly choose a user_agent
+  mobile_crawling: true                 # also try to use mobile version of the site
+
+# attack mode
+attack:
+  file_upload: false
+  directory_traveral: false
+
+# what do you want toi do with the output data
+data:
+  dump_to_file: true
+  save_to_db: false

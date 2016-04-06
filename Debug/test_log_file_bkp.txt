@@ -1,0 +1,544 @@
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider HTTPConnectionPool(host='mysmallwebpage.com', port=80): Read timed out. (read timeout=None)
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider HTTPConnectionPool(host='mysmallwebpage.com', port=80): Read timed out. (read timeout=None)
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', gaierror(8, 'nodename nor servname provided, or not known'))
+
+Spider ('Connection aborted.', TimeoutError(60, 'Operation timed out'))
+
+Spider ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+
+Spider expected string or buffer
+
+Spider expected string or buffer
+

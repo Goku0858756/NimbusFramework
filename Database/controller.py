@@ -3,7 +3,6 @@ __author__ = 'N05F3R4TU'
 def sprint(string):
     print("nimbus \> %s" % string)
 
-
 class DatabaseController(object):
     """
     This Database Controller Object is used to Manage MongoDB from within the Framework
@@ -16,8 +15,6 @@ class DatabaseController(object):
         self.full_path = os.path.dirname(os.path.realpath(__file__))
         self.server_file = "server.sh"
 
-        # print(self.args)
-
         if self.args['start'] and self.args['stop']:
             sprint("You can not START and STOP the Database at the same time!")
 
@@ -29,8 +26,6 @@ class DatabaseController(object):
 
         elif self.args['status']:
             self.mongo("status")
-
-        # self.status()
 
     # def status(self):
     #     import os

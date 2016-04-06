@@ -1,0 +1,40 @@
+# Misc Option which can be updated by using Nimbus Crawler
+charset: "None"
+
+# Perform an extensive DBMS version fingerprint
+fingerprint: true
+
+target:
+  - url: "http://www.qi.nl"
+  - urls: ["None"]
+  - file: "None"
+
+user_agent:
+  - randomize: false
+  - user_agent: "Nimbus-Bot"  # if randomize is True, this option is not used
+
+sitemap:
+  - sitemap: true
+  - sitemap_url: "http://www.qi.nl/sitemap.xml"
+
+detection:
+  - level: 1 # max 5
+  - risk: 1 # max 3
+  - titles: false #Compare pages based only on their titles
+
+misc:
+  - wizard: true
+  - batch: true
+  - beep: true
+
+optimize:
+  - o: true
+  - keep_alive: true
+
+
+
+tor:
+  - tor-options: ""
+
+proxy:
+  - proxy-options: ""

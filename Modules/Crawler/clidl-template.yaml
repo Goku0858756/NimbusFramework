@@ -1,0 +1,48 @@
+
+connection:
+  - db1: {user:sdfsdf, pass: dsfdf, ip:234.23.234.44},
+  - db2: {user:sdfsdf, pass: dsfdf, ip:234.23.234.44},
+
+
+command:
+  - find
+  - add
+  - edit
+  - rem
+  - pin
+  - pull
+  - replace
+
+category:
+  - prot
+  - pack
+  - port
+  - cms
+  - server
+  - os
+  - vuln
+  - soft
+
+types:
+  - prot: ["dns", "ftp", "ftps", "ssh", "ssl", "tls", "pop", "imap", "smtp", "snmp", "telnet", "gopher", "http", "ntp", "nntp", "https", "uucp", "xmpp", "smb", "cwmp"]
+  - pack: ["icmp", "udp", "tcp", "ipv4", "ipv6", "arp", "rarp", "dccp", "sctp"]
+  - port: [21, 22, 80, 123, 443, 8080]
+  - cms:  ["wordpress", "wp", "joomla", "drupal", "typo3", "magento", "oscommerce", "zencart"]
+  - server: ["apache", "iis", "linux", "osx", "irc"]
+  - os:   ["windows", "winxp", "win7", "osx", "linux", "solaris"]
+  - vuln: ["poodle", "xss", "sqli", "heartbleed"]
+  - soft: ["tomcat", "akamai", "flash", "jenkins"]
+
+additinal:
+  - version: func_version
+
+filter:
+  - geo:  {"nl":"netherlands", "de":"germany", "uk":"united kingdom"}
+  - vuln: [true, false]
+  - ip
+
+limit:
+  - top: {"func_limit":"top"}
+  - bot: {"func_limit":"bot"}
+  - min: {"func_limit":"min"}
+  - max: {"func_limit":"max"}

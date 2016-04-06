@@ -1,0 +1,21 @@
+name:
+  - Microsoft
+
+ip:
+  - "123.123.123.123"
+  - "23.22.333.4"
+
+url:
+  - http://www.microsoft.com
+
+dns:
+  - 4-333-22-23-bla-isp-com-microsoft
+
+id:
+  - "123123123"
+
+notes:
+  - None
+
+description:
+  - None

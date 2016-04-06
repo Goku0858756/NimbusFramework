@@ -3,15 +3,6 @@ from time import sleep
 import argparse
 from nimbus import Nimbus
 
-def epi():
-    print("""
-
-        "He shall be a wild donkey of a man, his hand against everyone and everyone's hand against him,
-        and he shall dwell over against all his kinsmen.
-
-                                                                    - Genesis 16:12 -
-
-    """)
 
 def sprint(string):
     print("nimbus \> %s" % string)
@@ -20,10 +11,11 @@ def sprint(string):
 class Framework(Nimbus):
 
     def __init__(self):
-        # Shared Target From Nimbus as Mother Object
-        # print("$$$$$$$$$$$$$$$$$$$$$$$$")
-        # print(self._pinned_target)
-        # print("$$$$$$$$$$$$$$$$$$$$$$$$")
+        Nimbus.__init__(self)
+
+        from Core.banners import BannersMain
+        main = BannersMain()
+        main.randomize()
 
         self.session_name = "nimbus \> "
         self.session_state = True
@@ -92,7 +84,7 @@ class Framework(Nimbus):
 
         banner.randomize()
         for attr in [attr for attr in dir(self) if inspect.ismethod(getattr(self, attr))]:
-            if attr not in ["usage", "__init__", "__del__", "__str__", "methods"]:
+            if attr not in ["usage", "__init__", "__del__", "__str__", "methods", "sprint"]:
                 # print("%s\t\t\t%s" % (attr, getattr(self, attr).__doc__))
                 commands.add_row([attr, getattr(self, attr).__doc__])
         return commands
@@ -105,33 +97,43 @@ class Framework(Nimbus):
                 methods.append(attr)
         print(methods)
 
-
     def crawl(self):
         """[ ARACHNIDA ] Nimbus Calls for Arachnida to Crawl"""
-        from Modules.Crawler.controller import Arachnida
-        sprint("Calling for Arachnida")
+        from imp import reload
+        # from Modules.Crawler.controller import Arachnida
+        import Modules.Crawler.controller as ctrl
 
-        crawler = Arachnida()
+        reload(ctrl)
+        # sprint("Calling for Arachnida")
+        # crawler = Arachnida()
+
+        crawler = ctrl.Arachnida()
+        print(" --- crawler ended")
 
     def web_gui(self):
         """[ WEB ] Web Interface to Control Scans and Targets"""
+        import os
         self.function_name = "web"
         sprint("start web Gui Interface")
-        from threading import Thread
-        from Web.controller import start_web
-
-        t = Thread(target=start_web, name="WebGUI")
-        t.start()
-        print("After Thread Started")
-        return
+        # from multiprocessing import Process
+        # from Web.controller import start_web
+        #
+        # t = Process(target=start_web, name="WebGUI")
+        # t.name = "Nimbus Web Control"
+        # t.daemon = True
+        # t.start()
+        # t.join()
+        # print("After Thread Started")
+        os.system("tmux new-window -t Nimbus:8000 -n Web")
+        os.system("tmux send-keys -t Nimbus:8000 'source bin/activate; cd Web; python3 controller.py; clear' C-m")
 
     def config(self):
         """[ CONFIG ] This option is to configure the framework"""
         print("Config Command")
 
-    def help(self):
-        """[ HELP ] Need I say more?"""
-        print(self.usage(), "\n")
+    # def help(self):
+    #     """[ HELP ] Need I say more?"""
+    #     print(self.usage(), "\n")
 
     def db(self):
         """[ DATABASE ] Control the Database with this option"""
@@ -180,83 +182,94 @@ class Framework(Nimbus):
                     parser.add_argument("-u", dest="url", action="store", help="You have a url for me to scan? Just gimmi ;)")
                     parser.add_argument("-v", dest="verbose", action="store_true", default=False, help="Vebose default is False")
 
-
-
                     # Shell Mode Scanner
                     shell.add_argument("--shell", dest="shell", action="store_true", default=False, help="Interactive Mode On/Off")
 
                     args = parser.parse_args(self.command.split()[1:])
 
-
                     if vars(args)['shell']:
                         # First check if SHELL MODE is Activated
-                        from Plugins.NmapScanner.controller import NmapScanner
+                        # from Plugins.NmapScanner.controller import NmapScanner
                         # shell_mode = Target()
                         print(args.shell)
+                        from Modules.Scanner.controller import ScannerShell
+                        shell = ScannerShell()
+                        break
                     else:
                         # If SHell Mode is not Activated, what do you want to do?
                         from Plugins.NmapScanner.controller import NmapScanner
                         scan = NmapScanner(ip=args.ip, name=args.url, verbose=args.verbose)
                         scan.scan()
 
-
-
-                    """ here we import the method and call the object with our args """
-                    # from Database.controller import DatabaseController
-                    # DatabaseController(vars(args))
+                """ here we import the method and call the object with our args """
+                # from Database.controller import DatabaseController
+                # DatabaseController(vars(args))
 
             except Exception as e:
                 sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
             finally:
                 break
 
+    def domotica(self):
+        from Modules.Domotica.controller import DomoticaShell
 
+        try:
+            dom = DomoticaShell()
+        except Exception as e:
+            sprint(e)
 
     def sqli(self):
         """[ SQL INJECTION ] Injection audit"""
         self.function_name = "sqli"
-        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), conflict_handler="resolve", description="Nimbus Rains Acid", add_help=True, epilog=epi())
+        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), conflict_handler="resolve", description="Nimbus Rains Acid", add_help=True)
         # general = parser.add_argument_group("General", description="General Options")
         # misc = parser.add_argument_group("Miscellaneous", description="Misc Options")
 
 
-        while self.session_state:
-            try:
-                if not self.command.split()[1:]:
-                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
-                    break
-                elif self.command.split()[1:]:
+        # new-window
+        # . bin/activate
+        # cd Plugin/SQLmap/sqlmap
+        # python2 ... <command>
+        # OoutputDIR  Sessions/sqli/<url>
 
-                    # BASIC WHEN in SHELL
-                    # -verbose          [-v, -vv]
-                    # -background       [--bg]
-                    # -give-id          [--id= STRING]
-                    # -sessions         [--sessions] {return ALL sessions}
-                    # -sessions         { draft | paused | running }
-                    # -retrieve-session [--retr= STRING]
-                    # -config           { list | new | edit | del }
 
-                    # STANDARD AUTO OPTIONS
-                    parser.add_argument("--target", dest="target", action="store", default=None,  help="[ -u ] Example: http://www.site.com/product.php?id=123")
-                    parser.add_argument("--optimize-switches", dest="optimize", action="store_true", default=False, help="[ -o ] Optimize switches")
-                    parser.add_argument("--all", dest="retrieve", action="store_true", default=False, help="[ --all ] Retrieve everything")
-                    parser.add_argument("--wizard", dest="wizard", action="store_true", default=False, help="[ --wizard ] Wizard Mode. Auto-mode")
-                    parser.add_argument("--batch", dest="batch", action="store_true", default=False, help="[ --batch ] Never ask for input")
-
-                    # general.add_argument("-u", help="Define a target for me. Example: http://www.site.com/product.php?id=")
-                    # misc.add_argument("--wizard", help="Let the Wizard take over")
-
-                    # print("[ OPTIONS ]", parser.parse_args(self.command.split()[1:]))
-                    args = parser.parse_args(self.command.split()[1:])
-
-                    """ here we import the method and call the object with our args """
-                    from Plugins.SQLmap.controller import SQLIController
-                    SQLIController(vars(args))
-
-            except Exception as e:
-                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
-            finally:
-                break
+        # while self.session_state:
+        #     try:
+        #         if not self.command.split()[1:]:
+        #             sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+        #             break
+        #         elif self.command.split()[1:]:
+        #
+        #             # BASIC WHEN in SHELL
+        #             # -verbose          [-v, -vv]
+        #             # -background       [--bg]
+        #             # -give-id          [--id= STRING]
+        #             # -sessions         [--sessions] {return ALL sessions}
+        #             # -sessions         { draft | paused | running }
+        #             # -retrieve-session [--retr= STRING]
+        #             # -config           { list | new | edit | del }
+        #
+        #             # STANDARD AUTO OPTIONS
+        #             parser.add_argument("--target", dest="target", action="store", default=None,  help="[ -u ] Example: http://www.site.com/product.php?id=123")
+        #             parser.add_argument("--optimize-switches", dest="optimize", action="store_true", default=False, help="[ -o ] Optimize switches")
+        #             parser.add_argument("--all", dest="retrieve", action="store_true", default=False, help="[ --all ] Retrieve everything")
+        #             parser.add_argument("--wizard", dest="wizard", action="store_true", default=False, help="[ --wizard ] Wizard Mode. Auto-mode")
+        #             parser.add_argument("--batch", dest="batch", action="store_true", default=False, help="[ --batch ] Never ask for input")
+        #
+        #             # general.add_argument("-u", help="Define a target for me. Example: http://www.site.com/product.php?id=")
+        #             # misc.add_argument("--wizard", help="Let the Wizard take over")
+        #
+        #             # print("[ OPTIONS ]", parser.parse_args(self.command.split()[1:]))
+        #             args = parser.parse_args(self.command.split()[1:])
+        #
+        #             """ here we import the method and call the object with our args """
+        #             from Plugins.SQLmap.controller import SQLIController
+        #             SQLIController(vars(args))
+        #
+        #     except Exception as e:
+        #         sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
+        #     finally:
+        #         break
 
 
     def stats(self):
@@ -324,7 +337,7 @@ class Framework(Nimbus):
 
         self.function_name = "target"
         parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), conflict_handler="resolve",
-                                         description=Banners.targets(self))
+                                         description=Banners.targets())
         process = parser.add_argument_group("  ### Database".upper(), description="{}".format("-"*40))
         shell = parser.add_argument_group("  ### Shell Interactive Mode".upper(), description="{}".format("-"*40))
 
@@ -332,7 +345,12 @@ class Framework(Nimbus):
         while self.session_state:
             try:
                 if not self.command.split()[1:]:
-                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+                    from pymongo import MongoClient
+                    mongo = MongoClient("localhost", port=27017, connect=True)
+                    db = mongo["targets"]["targets"]
+                    check = db.find_one({"target_pinned": True})
+                    print(check)
+
                     break
                 elif self.command.split()[1:]:
                     # Shell Mode
@@ -356,8 +374,10 @@ class Framework(Nimbus):
 
                     if vars(args)['shell']:
                         # First check if SHELL MODE is Activated
-                        from Modules.Target.controller import Target
-                        shell_mode = Target()
+                        from Modules.Target.controller import TargetShell
+                        # shell_mode = Target()
+                        shell = TargetShell()
+                        break
                     else:
                         # If SHell Mode is not Activated, what do you want to do?
                         print("Checking what is all TRUE or FALSE")
@@ -377,6 +397,133 @@ class Framework(Nimbus):
 
     def find(self):
         """[ FIND ] from the Search Engine"""
+
+        self.function_name = "find"
+        # parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Embedded Database with CliDL", add_help=True)
+        while self.session_state:
+            try:
+                if not self.command.split()[1:]:
+                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
+                    break
+                elif self.command.split()[1:]:
+                    # parser.add_argument("--dbs", dest="dbs", action="store_true", default=False, help="What Databases are there in my Database")
+                    # parser.add_argument("--wp", dest="wp", action="store_true", default=False, help="Statistics about Wordpress")
+                    # parser.add_argument("--cms", dest="cms", action="store_true", default=False, help="Statistics about All CMS")
+                    # parser.add_argument("--coll", dest="coll", action="store_true", default=False, help="Show Collections")
+                    # parser.add_argument("--target", dest="target", action="store_true", default=False, help="Show Targets")
+                    # parser.add_argument("--proxy", dest="proxy", action="store_true", default=False, help="Show the Available Proxy's")
+                    # parser.add_argument("--vpn", dest="vpn", action="store_true", default=False, help="Show My VPN's")
+                    # parser.add_argument("--tasks", dest="tasks", action="store_true", default=False, help="Show my current Tasks")
+                    #
+                    #
+                    # args = parser.parse_args(self.command.split()[1:])
+                    # print(self.command.split()[1:])
+
+                    """
+                    + command | collection  | type  | version   args    limit   filter  filter    filter
+                    + func    | category    |       | <!=>              top,bot  ! =    boolean
+                    +                                                   min,max
+                    + -------------------------------------     ------  ------- ------- --------- ------------
+                    + find    | prot        | ftp   | v2.4              top25   geo:nl  vuln:true
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + add     | proxy       |
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + rule    | vuln:true   | xss   |           report
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + rule    | cms         | wp    | =v3.0.1   hack            geo:de
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + config  | user        | admin | password  add
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + crawl   | web         | url   |                           geo=!nl
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + scan    | port/script | udp   | 123                                         ip:72.42.45.5
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + scan    | ip          | tcp   | 80                                          ip:72.42.45.5
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    + find    | server      | iis   | <v7.0             top10   geo:us  vuln:true
+                    + -------------------------------------     ------  ------- ------- --------- -------------
+                    +
+                    """
+                    keywords = ["find", "add", "scan", "config", "rule", "crawl", ]
+                    category = ["prot", "pack", "port", "cms", "geo", "server", "os", "vuln", "soft"]
+
+                    types = {
+                        "prot": ["dns", "ftp", "ftps", "ssh", "ssl", "tls", "pop", "imap", "smtp", "snmp", "telnet", "gopher", "http", "ntp", "nntp", "https", "uucp", "xmpp", "smb", "cwmp"],
+                        "pack": ["icmp", "udp", "tcp", "ipv4", "ipv6", "arp", "rarp", "dccp", "sctp"],
+                        "port": [21, 22, 80, 123, 443, 8080],
+                        "cms":  ["wordpress", "wp", "joomla", "drupal", "typo3", "magento", "oscommerce", "zencart"],
+                        "geo":  {"nl":"netherlands", "de":"germany", "uk":"united kingdom"},
+                        "server": ["apache", "iis", "linux", "osx", "irc"],
+                        "os":   ["windows", "winxp", "win7", "osx", "linux", "solaris"],
+                        "vuln": ["poodle", "xss", "sqli", "heartbleed"],
+                        "soft": ["tomcat", "akamai", "flash", "jenkins"]
+                    }
+                    limit = ["top", "bot", "min", "max"]
+
+                    for a in self.command.split()[1:]:
+
+                        if a.find(":"):
+
+                            key = [cat for cat in a.split(":")] # ["top25", "server", "iis", "<v7.0"] per iteration
+                            if len(key) == 1:
+                                # ['arg']
+                                if key[0][:3] in limit:
+                                    print(key[0])
+
+                            elif len(key) == 2:
+                                # is filter
+                                # geo:nl
+                                # ["geo", "nl"]
+                                if key[0] in category:
+                                    print("find from {} for a specific item: {}".format(key[0], key[1]))
+
+                            elif len(key) > 2:
+                                # is main argument # ["top25", "server", "iis", "<v7.0"]
+                                for item in key:
+
+                                    if item[:3] in limit:
+                                        # item is limit
+                                        # ['top25']
+                                        print(item)
+
+                                    elif item in category:
+                                        # item is main-category
+                                        # ['server']
+                                        print(item)
+                                        i = key.index(item)
+
+                                        # Check index+1 ['iis']
+                                        # print(types[item])
+                                        type = key[int(i)+1]
+                                        if type in types[item]:
+                                            print(type)
+                                    else:
+                                        print(item)
+                                        # is item a version
+                                            # if item is a version check for <>!=
+                            else:
+                                print("ELSE Raise")
+
+
+
+
+                        """
+                        nimbus \> find top25:server:iis:<v7.0 vuln:poodle geo:de
+                        top25:server:iis:<v7.0
+                        ['top25', 'server', 'iis', '<v7.0']
+                        vuln:poodle
+                        ['vuln', 'poodle']
+                        geo:de
+                        ['geo', 'de']
+                        """
+
+            except Exception as e:
+                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
+            finally:
+                break
+
+
+
 
         # What do you want me to find for you?
 
@@ -426,39 +573,12 @@ class Framework(Nimbus):
             :returns List of 30 websites where found xss vulnerabilities
 
             find server:iis:<v7.0 vuln:poodle
+            find top25:server:iis:<v7.0 vuln:poodle geo:de
             :returns All Servers that is running on a Microsoft IIS platform with Version Less then 7.0 are found to be vulnerabile to a poodle attack
             find server:iis:<v7.0 vuln:true/false
             :returns Same as before, but All servers Are vulnerable { boolean }
 
         """
-
-        self.function_name = "find"
-        parser = argparse.ArgumentParser(prog="{} function".format(self.function_name.upper()), description="Nimbus Searches with Thunder", add_help=True)
-        while self.session_state:
-            try:
-                if not self.command.split()[1:]:
-                    sprint("Try to use `{} -h` for more option".format(self.function_name.lower()))
-                    break
-                elif self.command.split()[1:]:
-                    """
-                        Combine Arguments to find What your looking for
-                    """
-                    parser.add_argument("-s", dest="start", action="store_true", default=False, help="Start the Search Engine")
-                    parser.add_argument("--t", dest="stop", action="store_true", default=False, help="Stop the Search Engine")
-                    parser.add_argument("--u", dest="status", action="store_true", default=False, help="The Status of the Search Engine")
-                    parser.add_argument("--p", dest="pid", action="store_true", default=False, help="Search Engine Process ID")
-
-                    args = parser.parse_args(self.command.split()[1:])
-
-                    """ here we import the method and call the object with our args """
-                    from Dashboard.controller import DashboardController
-                    DashboardController("search", vars(args))
-
-            except Exception as e:
-                sprint(Exception("[ {} ]".format(self.function_name.upper()), str(e)))
-            finally:
-                break
-
 
     def set(self):
         """[ SET ] Every Framework has to have a set function"""
@@ -534,3 +654,25 @@ class Framework(Nimbus):
         sprint("[!] *  Details: https://github.com/....../nimbus-framework/pull/####       *")
         sprint("[!] ************************************************************************")
         sprint("[!]                                       Rain with Rage, Exploit with Love ")
+        sprint("[!]                                                          Stay Awesome ! ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+    target
+
+"""

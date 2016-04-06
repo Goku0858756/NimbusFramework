@@ -10,3 +10,5 @@ __author__ = 'N05F3R4TU'
 # TODO: CommandLine Colors
 # TODO: CommandLine Sounds
 # TODO: CommandLine Tables
+class Framework(object):
+    pass

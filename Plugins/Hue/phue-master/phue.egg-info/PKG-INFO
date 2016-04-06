@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: phue
+Version: 0.9
+Summary: A Philips Hue Python library
+Home-page: https://github.com/studioimaginaire/phue
+Author: Nathanaël Lécaudé
+Author-email: UNKNOWN
+License: WTFPL
+Description: A Philips Hue Python library
+Platform: UNKNOWN

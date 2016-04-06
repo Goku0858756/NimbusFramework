@@ -17,8 +17,8 @@ if __name__ == '__main__':
     # PIPY = "https://pypi.python.org/pypi/python-nmap"
 
     # target information
-    NAME = 'sirolf.com'
-    IP = '149.210.192.240'
+    NAME = '----.com'
+    IP = '149.210.192.---'
     PORT = "21"
     PORTS = "21-443"
 

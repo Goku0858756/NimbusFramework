@@ -3,7 +3,7 @@ __all__ = ['NSLookup']
 import socket
 
 
-class NSLookup:
+class NSLookup(object):
 
     def __init__(self, url=None, ip=None):
         self.id = id(self)

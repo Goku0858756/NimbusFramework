@@ -1,5 +1,45 @@
 __author__ = 'N05F3R4TU'
 
+class Discover(object):
+    """
+    Main Discover Object
+    """
+    def __init__(self):
+        self.name = "Main Discover Object"
+
+    def is_wordpress(self):
+        pass
+
+    def is_joomla(self):
+        pass
+
+    def is_drupal(self):
+        pass
+
+    def is_typo3(self):
+        pass
+
+    def is_opencart(self):
+        pass
+
+    def is_magento(self):
+        pass
+
+    def is_oscommerce(self):
+        pass
+
+    def is_iis(self):
+        pass
+
+    def is_bootstrap(self):
+        pass
+
+    def is_node_js(self):
+        pass
+
+    def is_angular_js(self):
+        pass
+
 class DiscoverWordpress(object):
 
     def __init__(self):

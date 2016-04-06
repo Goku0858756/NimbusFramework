@@ -1,0 +1,27 @@
+
+Eerste URL wordt base_url
+    URL parsed en vergelijk materiaal
+
+crawl voor alle hrefs
+    check of hrefs zijn broken? ## if True verbeter url en geef terug
+    check of hrefs intern zijn of extern ## if true append to list
+    check of robot is aanwezig op de site ## if true tag robots: True
+    check of url HAS form
+    check of url HAS dork
+    check of url
+
+
+
+
+        # get base url and validate_url
+            # crawl base_url and get all HREF
+
+        # map; first check for broken hrefs
+        # map; all hrefs, validate_href_origin, [hrefs]
+        # so it checks if href is a internal url or external url
+        # save the urls to queues
+
+
+        # verbeteringen van urls met map()
+
+        # heeft het robot.txt/sitemap/  met filter()

@@ -152,7 +152,7 @@ class Crawler(object):
         from bs4 import BeautifulSoup
 
         if url != None:
-            for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text).find_all('a')]):
+            for self._set_all_href in set([href.get('href') for href in BeautifulSoup(url.text, "html.parser").find_all('a')]):
                 self.queue.queue.append(self.url_check(self._set_all_href))
 
             print(len(self._set_all_href))
@@ -258,7 +258,7 @@ class Spiderling(Crawler):
         try:
 
             for link in set([href.get('href') for href in
-                             BeautifulSoup(requests.get(url=self.queue.get(block=True)).text).find_all('a')]):
+                             BeautifulSoup(requests.get(url=self.queue.get(block=True)).text, "html.parser").find_all('a')]):
                 # print(self.url_check(url=link))
                 # print(link)
 

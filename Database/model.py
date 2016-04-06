@@ -4,11 +4,12 @@ from bson.dbref import DBRef
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
+from nimbus import Nimbus
 
-
-class ModelTarget(object):
+class ModelTarget(Nimbus):
 
     def __init__(self, name):
+        super()
         self.target_id = id(self)
         self.target_name = name
         self.target_ref = ""
@@ -20,6 +21,18 @@ class ModelTarget(object):
     def target_put(self):
         """Put new Target into the Database"""
         pass
+
+    def get_pinned(self):
+        pass
+
+    def check_target_by(self, key):
+        """
+        Check in Database if target_{key} is present
+        :param key: target_key
+        :return: dict holding target_object from database
+        """
+        pass
+
 
 
 

@@ -1,0 +1,2 @@
+Target URL,Place,Parameter,Techniques
+http://localhost:8888/users/login.php,POST,username,BET

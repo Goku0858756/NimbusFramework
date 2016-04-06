@@ -1,0 +1,28 @@
+/* Database */
+"crawler": [
+
+    { /* Documents */
+    "123.456.789.00" : {
+        "_id": "Object(decimal)",
+        "url": { "full":"http://www.fullurl.com", "base":"", "scheme":"http", "netloc":"www.url.com", "path":"/%7Eguido/Python.html", "params":"", "query":"", "fragment":"" },
+        "geo": {"latitude": "43.2344", "longitude": "4.2342", "country": ["nl", "Netherlands"], "city": "Rotterdam"},
+        "charset": "utf-8",
+        "banner_grab": "base64(w3rf34t543gf35yt45hg34gwf34g5-45gr4e-434g343g34+g334gewf3)",
+        "robots": {"state": true, "file": "base64(w3rf34t543gf35yt45hg34gwf34g5)"},
+        "session": "session_id",
+        "cookie": "cookie_id",
+        "php": {"state": true, "version": "5.4"},
+        "sitemap": {"state": true, "url": "url_sitemap.xml"},
+        /* Embedded CMS */
+        "cms_discovery": {
+              "is_wordpress": {"state": true, "version": "4.2.3", "theme":"", "plugin":["plugin1", "plugin2", " etc... "]}
+        },
+        /* Crawl Links */
+        "links": [
+            {"url": "http://www.example.com", "tag": ["has_form", "has_dork", "is_redirect"]},
+            {"url": "http://www.example.com", "tag": ["has_form", "has_dork", "is_redirect"]},
+            {"url": "http://www.example.com", "tag": ["has_form", "has_dork", "is_redirect"]}
+        ]}
+      }
+
+] /* End Of Array */

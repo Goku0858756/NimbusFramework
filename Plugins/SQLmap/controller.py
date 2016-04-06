@@ -1,12 +1,13 @@
 __author__ = 'N05F3R4TU'
-from sprint import sprint
+from sprint import Sprint
 
-class SQLIController(object):
+class SQLIController(Sprint):
     """
     Nimbus SQL Injection Controller Object
     """
     def __init__(self, *args):
         import os
+        super().__init__()
         self.id = id(self)
         self.name = "Nimbus SQL Injection Controller Object"
         self.args = args[0]
@@ -15,17 +16,17 @@ class SQLIController(object):
         self.file = "server.sh"
 
         # TEMP: Print Complete Dict
-        sprint(self.args)
+        self.sprint(self.args)
 
         if self.args["target"] != None:
-            sprint(self.args["target"])
+            self.sprint(self.args["target"])
         else:
-            sprint("######### SQLI || ERROR")
+            self.sprint("######### SQLI || ERROR")
 
-        sprint("Object ID: %s is Created" % self.id)
+        self.sprint("Object ID: %s is Created" % self.id)
 
     def __del__(self):
-        sprint("Object ID: %s is Destroyed, Object-Name is: %s" % (self.id, self.__class__.__name__))
+        self.sprint("Object ID: %s is Destroyed, Object-Name is: %s" % (self.id, self.__class__.__name__))
         return self
 
     def target(self):

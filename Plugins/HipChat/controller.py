@@ -41,7 +41,7 @@ class HipChat(object):
 
 if __name__ == '__main__':
 
-    token = '3XkVx2g5HT4lkqUTWYdqjdfhnFY7U1sun57xw9DR'
-    room = '2014596'
+    token = '-----'
+    room = '----'
 
-    HipChat(token=token, room=room, message="Denise hier is mijn kus voor jouw").post()
+    HipChat(token=token, room=room, message="I got a kiss 4 you").post()
